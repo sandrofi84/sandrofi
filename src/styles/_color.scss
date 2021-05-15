@@ -1,0 +1,19 @@
+@use "variables";
+
+.color {
+  &--white {
+    color: white;
+  }
+
+  &--red {
+    color: red;
+  }
+
+  &--orange {
+    color: variables.$mainOrange;
+  }
+
+  &--black {
+    color: black;
+  }
+}

@@ -1,0 +1,108 @@
+---
+title: Hodos Training
+featureImage: hodos.png
+embeddedImages:
+  - hodos-page-speed-desktop.png
+  - hodos-page-speed-mob.png
+embeddedVideos:
+  - hodos-countdown.webm
+  - hodos-countdown.mp4
+excerpt: Brochure website for a training company with a blog and a backend to allow for content management
+websiteLink: https://www.hodostraining.com/
+githubLink: ""
+techUsed: Javascript, React, Gatsby, PostCSS, NetlifyCMS, AWS SES
+order: 1
+---
+
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+
+This is the very first website I ever deployed.
+
+<br />
+
+A couple of months after I started learning to code, my gitlfriend started her training business. It was not long before she was ready to introduce her business to world and, naturally, I offered to make her a website.
+
+<br />
+
+She needed something simple, <span>a brochure website to showcase her services</span>, a blog and a contact form.
+
+<br />
+
+I wanted to make the website fast, as it is not only important for a good user experience, but it is [now an important factor in Google's search rankings](https://developers.google.com/search/blog/2020/11/timing-for-page-experience). So I decided to go with [Gatsby](https://www.gatsbyjs.com/), which I had never used before, but I had read a lot of good about.
+
+<br />
+
+Gatsby is a static site generator that comes with a lot of features out of the box, most notably it optimises your pictures and uses GraphQL to pull content from different sources at build time - <i>when the static files are generated</i>. Your website pages are now static files on the server/CDN, which means not only that it will load very fast in the browser, but it is great for SEO as well.
+
+<br />
+
+Gatsby reflects perfectly the [JAMstack](https://jamstack.org/) philosophy, which promotes a <span>serverless architecture</span>, with website functionalities - <i>that would normally require you to run a server</i> - added through third party providers.
+
+<br />
+
+<h2 className="project__body__subtitle color--red">A Simple Website</h2>
+
+<br />
+
+I thought this was exactly the right approach for Hodos Training’s website, as the only features required were a simple CMS and a contact form.
+
+<br />
+
+So I chose to host the site on [Netlify](https://www.netlify.com/), which works great for a Gatsby site - <i>it connects to your Github repo and detects the changes in your files triggering automated deploys</i>. Plus, it offers <span>Netlify Functions</span> (Lambda Functions) and <span>NetlifyCMS</span>.
+
+<br />
+
+I used a Netlify Function to link the contact form to <span>AWS SES</span> (Simple E-mail System), which sends an email to my girlfriend with the user’s message.
+
+<br />
+
+NetlifyCMS is a very simple tool, it’s easy to set up and comes free to Netlify users. It saves the files you upload/create directly to your Github repo - <i>as markdown or media files</i> - triggering a new build of your website.
+
+<br />
+
+<h2 className="project__body__subtitle color--red">An Evolving Website</h2>
+
+<br />
+
+At first, my girlfriend just wanted to be able to upload new blog posts and courses, but as her business took shape, <span>we decided to implement limited-time special offers</span>, that would show a countdown until the offer expires. It was just a matter of changing the configuration of NetlifyCMS and building a countdown React component.
+
+<br />
+
+<div className="project__body__video">
+  <video controls mute width="100%">
+    <source src={props.localVideos[0].publicURL} type="video/webm" />
+    <source src={props.localVideos[1].publicURL} type="video/mp4" />
+  </video>
+</div>
+
+<br />
+
+<h2 className="project__body__subtitle color--red">A Performant Website</h2>
+
+<br />
+
+Now, in terms of performance, <span>the website was already very fast</span>, but to optimise it even further, I installed a Gatsby plugin that replaces React with [Preact](https://preactjs.com/) - <i>a lightweight alternative which is compatible with most React libraries</i> - and <span>shaved ~40kB off the Javascript bundle</span>.
+
+<br />
+
+And the result was outstanding.
+
+<br />
+
+<div className="project__body__picture">
+  <GatsbyImage alt="some alt text" image={getImage(props.localImages[0])} />
+</div>
+
+<br />
+
+<div className="project__body__picture">
+  <GatsbyImage alt="some alt text" image={getImage(props.localImages[1])} />
+</div>
+
+<br />
+
+<h2 className="project__body__subtitle color--red">Conclusion</h2>
+
+<br />
+
+Overall, I was very happy with how the website turned out, but more importantly, it gave me the opportunity to practice my React skills and it made me discover a wonderful framework such as Gatsby, which I have used in all my projects ever since.

@@ -2,19 +2,19 @@ import React from "react"
 
 // Components
 import Seo from "../components/seo.js"
-import HomeSection from "../components/homeSection.js"
+import SkillsSection from "../components/skillsSection.js"
 
 
-const IndexPage = () => {
+const SkillsPage = () => {
 
   return (
     <>
-      <Seo title="home" />
+      <Seo title="skills" />
       <div className="section-container">
-        <HomeSection />
+        <SkillsSection />
       </div>
     </>
   )
 }
 
-export default IndexPage
+export default SkillsPage

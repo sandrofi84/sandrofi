@@ -1,0 +1,22 @@
+.canvas {
+  &-container {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    min-height: 700px;
+    width: 100vw;
+    transform: translate3d(0, 0, 0);
+    animation: fade-in 5s forwards;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,23 @@
+@use "variables";
+
+.bg {
+  &--white {
+    background-color: white;
+  }
+
+  &--white-tr {
+    background-color: variables.$trWhite;
+  }
+
+  &--red {
+    background-color: red;
+  }
+
+  &--black {
+    background-color: black;
+  }
+
+  &--black-tr {
+    background-color: variables.$trBlack;
+  }
+}

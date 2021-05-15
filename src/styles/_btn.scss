@@ -1,0 +1,30 @@
+.btn {
+  display: block;
+  width: max-content;
+  padding: 6px 15px;
+  font-size: 1.5rem;
+
+  &--red {
+    color: white;
+    background-color: red;
+
+    &:hover {
+      color: red;
+      background-color: white;
+    }
+  }
+
+  &--transparent {
+    color: white;
+    border: 1px solid white;
+
+    &:hover {
+      color: red;
+      background-color: white;
+    }
+  }
+
+  &--centered {
+    margin: auto;
+  }
+}

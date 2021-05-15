@@ -1,0 +1,125 @@
+@use "variables";
+
+.project {
+  &__main-picture {
+    margin-bottom: 20px;
+  }
+
+  &-pool {
+    display: flex;
+    justify-content: space-evenly;
+    flex-flow: wrap;
+    width: 100%;
+  }
+
+  &__body {
+    margin: 40px 0;
+
+    &__subtitle {
+      margin-top: 20px;
+    }
+
+    &__picture {
+      max-width: max-content;
+      margin: 0 auto;
+    }
+
+    &__video {
+      max-width: max-content;
+      margin: 0 auto;
+    }
+
+    a {
+      color: variables.$mainOrange;
+      text-decoration: underline;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+
+    span {
+      color: variables.$paleRed;
+    }
+  }
+
+  &-card {
+    position: relative;
+    width: 30%;
+    max-width: 340px;
+    min-width: 250px;
+    margin: 10px;
+
+    &:hover {
+      > div:first-of-type {
+        opacity: 1;
+      }
+    }
+
+    &__overlay {
+      z-index: 5;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+      padding: 40px 20px;
+      background-color: rgba(255, 0, 0, 0.8);
+      opacity: 0;
+      transition: opacity 0.5s ease-out;
+
+      &-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+
+        > * {
+          display: block;
+          margin-bottom: 10px;
+        }
+
+        > a:first-of-type {
+          margin-bottom: 40px;
+        }
+      }
+
+      &__link {
+        &-group {
+          display: flex;
+          align-items: center;
+        }
+
+        &-icon {
+          margin-right: 6px;
+          height: 20px;
+          width: 20px;
+
+          &--inverted {
+            filter: invert(100%);
+          }
+        }
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    &__picture {
+      padding: 20px;
+      padding-bottom: 10px;
+    }
+
+    &__text {
+      padding: 20px;
+      padding-top: 0;
+
+      > * {
+        margin-top: 8px;
+        margin-bottom: 8px;
+      }
+    }
+  }
+}
