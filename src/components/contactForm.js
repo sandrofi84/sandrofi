@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-//import Axios from 'axios'
+import Axios from 'axios'
 
 import InputStatus from "./inputStatus"
 //import FormConfirmationBanner from "./formConfirmationBanner"
@@ -52,87 +52,89 @@ const ContactForm = () => {
 
     async function handleSubmit(e) {
 
-        // e.preventDefault();
-        // setNameIsValid(validateName(name));
-        // setEmailIsValid(validateEmail(email));
-        // setMessageIsValid(validateMessage(message));
+        e.preventDefault();
+        setNameIsValid(validateName(name));
+        setEmailIsValid(validateEmail(email));
+        setMessageIsValid(validateMessage(message));
 
 
-        // if (nameIsValid && emailIsValid && messageIsValid && !phone && !address) {
-        //     setBannerIsLoading(true);
-        //     setBannerIsVisible(true);
+        if (nameIsValid && emailIsValid && messageIsValid && !phone && !address) {
+            setBannerIsLoading(true);
+            setBannerIsVisible(true);
 
-        //     try {
-        //         const response = await Axios.post("/.netlify/functions/ses-send-email", { name, email, message });
-        //         if (response.status === 200) {
-        //             setWasSent(true);
-        //             setBannerIsLoading(false);
-        //             setTimeout(() => {
-        //                 setBannerIsVisible(false)
-        //             }, 4000)
-        //         }
+            try {
+                const response = await Axios.post(`https://sandrofi.vercel.app/api/ses-send-email`, { name, email, message });
+                console.log(response)
 
-        //         setName("");
-        //         setEmail("");
-        //         setMessage("");
-        //     } catch (error) {
-        //         console.log(error);
-        //         setWasSent(false);
-        //         setBannerIsLoading(false);
-        //         setTimeout(() => {
-        //             setBannerIsVisible(false)
-        //         }, 4000)
-        //     }
+                if (response.status === 200) {
+                    setWasSent(true);
+                    setBannerIsLoading(false);
+                    setTimeout(() => {
+                        setBannerIsVisible(false)
+                    }, 4000)
+                }
 
-        // } else if (nameIsValid && emailIsValid && messageIsValid && (phone || address)) {
-        //     setIsRobot(true);
-        //     setStatusIsVisible(true);
-        // } else {
-        //     setStatusIsVisible(true);
-        // }
+                setName("");
+                setEmail("");
+                setMessage("");
+            } catch (error) {
+                console.log(error);
+                setWasSent(false);
+                setBannerIsLoading(false);
+                setTimeout(() => {
+                    setBannerIsVisible(false)
+                }, 4000)
+            }
+
+        } else if (nameIsValid && emailIsValid && messageIsValid && (phone || address)) {
+            setIsRobot(true);
+            setStatusIsVisible(true);
+        } else {
+            setStatusIsVisible(true);
+        }
 
     }
 
     async function handleChange() {
 
-        // if (isRobot && notabotCheckbox.current.checked) {
-        //     if (nameIsValid && emailIsValid && messageIsValid) {
+        if (isRobot && notabotCheckbox.current.checked) {
+            if (nameIsValid && emailIsValid && messageIsValid) {
 
-        //         document.getElementById("nab-container").classList.toggle("goodybag--is-visible")
-        //         notabotCheckbox.current.checked = false
-        //         setIsRobot(false)
-        //         setBannerIsLoading(true);
-        //         setBannerIsVisible(true);
+                document.getElementById("nab-container").classList.toggle("goodybag--is-visible")
+                notabotCheckbox.current.checked = false
+                setIsRobot(false)
+                setBannerIsLoading(true);
+                setBannerIsVisible(true);
     
-        //         try {
-        //             const response = await Axios.post("/.netlify/functions/ses-send-email", { name, email, message });
-        //             if (response.status === 200) {
-        //                 setWasSent(true);
-        //                 setBannerIsLoading(false);
-        //                 setTimeout(() => {
-        //                     setBannerIsVisible(false)
-        //                 }, 4000)
-        //             }
+                try {
+                    const response = await Axios.post("/.netlify/functions/ses-send-email", { name, email, message });
+                    if (response.status === 200) {
+                        setWasSent(true);
+                        setBannerIsLoading(false);
+                        setTimeout(() => {
+                            setBannerIsVisible(false)
+                        }, 4000)
+                    }
     
-        //             setName("");
-        //             setEmail("");
-        //             setMessage("");
-        //         } catch (error) {
-        //             console.log(error);
-        //             setWasSent(false);
-        //             setBannerIsLoading(false);
-        //             setTimeout(() => {
-        //                 setBannerIsVisible(false)
-        //             }, 4000)
-        //         }
+                    setName("");
+                    setEmail("");
+                    setMessage("");
+                } catch (error) {
+                    console.log(error);
+                    setWasSent(false);
+                    setBannerIsLoading(false);
+                    setTimeout(() => {
+                        setBannerIsVisible(false)
+                    }, 4000)
+                }
 
-        //     } else {
-        //         setStatusIsVisible(true);
-        //     }
+            } else {
+                setStatusIsVisible(true);
+            }
 
-        // } else {
-        //     notabotCheckbox.current.disabled = true
-        // }
+        } else {
+            notabotCheckbox.current.disabled = true
+        }
     }
 
     return (
