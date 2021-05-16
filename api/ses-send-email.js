@@ -52,11 +52,11 @@ const sendToSES = async (req, res) => {
 
   ses.sendEmail(params).promise().then(data => {
       console.log("email submitted to SES", data);
-      res.statusCode(200).send(`Message sent`)
+      res.status(200).send(`Message sent`)
     })
     .catch(error => {
       console.log(error);
-      res.statusCode(500).send(`Message unsuccesfully sent, error: ${error}`)
+      res.status(500).send(`Message unsuccesfully sent, error: ${error}`)
   })
 
 }
