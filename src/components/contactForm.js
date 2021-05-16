@@ -195,7 +195,7 @@ const ContactForm = () => {
                         }} type="text" name="address" id="address-field" value={address} autoComplete="new-password" className="goodybag"/>
 
                     <div className="form__btn-group">
-                        <button type="submit" className={`btn btn--red${bannerIsLoading ? " btn--loading" : ""} `} disabled={bannerIsLoading}>
+                        <button type="submit" className={`btn btn--red${bannerIsLoading ? " btn--loading" : ""} `} disabled={bannerIsLoading} style={!bannerIsLoading && bannerIsVisible ? {backgroundColor: "red"} : {}}>
                             { 
                                 bannerIsLoading ? <div className="loading-icon"><div></div></div> :
                                 bannerIsVisible ? <img src={wasSent ? greenCheckmarkIcon : invalidIcon} alt={wasSent ? "valid" : "invalid"} style={wasSent ? {transform: "translateY(3px)"} : {}}/> : 
