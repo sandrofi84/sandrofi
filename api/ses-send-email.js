@@ -6,8 +6,8 @@ const sendToSES = async (req, res) => {
   const sendToEmail = "sandrofillinich@gmail.com"
 
   console.log(req)
-  
-  const { name, email, message } = JSON.parse(req.body)
+
+  const { name, email, message } = req.body
 
   AWS.config.update({
       accessKeyId: process.env.ACCESS_KEY,
