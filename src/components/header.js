@@ -1,7 +1,10 @@
-import React, { useContext } from 'react'
+import React, { useContext, useMemo, useState } from 'react'
 
 // Components
 import { Link } from 'gatsby'
+import MenuLarge from './menuLarge'
+import MenuIcon from './menuIcon'
+import MenuSmall from './menuSmall'
 
 // Context
 import DispatchContext from "../context/dispatchContext"
@@ -9,10 +12,9 @@ import StateContext from '../context/stateContext'
 
 
 const Header = () => {
+    const [navIsVisible, setNavIsVisible] = useState(false);
     const setAppState = useContext(DispatchContext)
     const appState = useContext(StateContext)
-
-    const activeStyle = { color: "red" }
 
     return (
         <header className="header bg--black-tr">
@@ -22,26 +24,9 @@ const Header = () => {
                 </Link>
             </div>
 
-            <nav className="header__nav">
-                <ul className="header__nav__list">
-                    <li className="header__nav__list-item">
-                        <Link to="/" onClick={() => setAppState("/")} style={appState === "/" ? activeStyle : {}}>home</Link>
-                        <span style={appState === "/" ? {opacity: "1", color: "red"} : {opacity: "0"}}>.</span>
-                    </li>
-                    <li className="header__nav__list-item">
-                        <Link to="/skills/" onClick={() => setAppState("/skills/")} style={appState === "/skills/" ? activeStyle : {}}>skills</Link>
-                        <span style={appState === "/skills/" ? {opacity: "1", color: "red"} : {opacity: "0"}}>.</span>
-                    </li>
-                    <li className="header__nav__list-item">
-                        <Link to="/projects/" onClick={() => setAppState("/projects/")} style={appState === "/projects/" ? activeStyle : {}}>projects</Link>
-                        <span style={appState === "/projects/" ? {opacity: "1", color: "red"} : {opacity: "0"}}>.</span>
-                    </li>
-                    <li className="header__nav__list-item">
-                        <Link to="/contact/" onClick={() => setAppState("/contact/")} style={appState === "/contact/" ? activeStyle : {}}>contact</Link>
-                        <span style={appState === "/contact/" ? {opacity: "1", color: "red"} : {opacity: "0"}}>.</span>
-                    </li>
-                </ul>
-            </nav>
+            <MenuLarge appState={appState} setAppState={setAppState} />
+            <MenuSmall appState={appState} setAppState={setAppState} isVisible={navIsVisible} toggleMenu={setNavIsVisible} />
+            <MenuIcon navIsVisible={navIsVisible} toggleMenu={setNavIsVisible} />
             
         </header>
     )
