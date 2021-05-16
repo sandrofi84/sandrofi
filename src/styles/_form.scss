@@ -89,4 +89,13 @@
       }
     }
   }
+
+  &__btn-group {
+    display: flex;
+    align-items: center;
+
+    img {
+      filter: brightness(100);
+    }
+  }
 }

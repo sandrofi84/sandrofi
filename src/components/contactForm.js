@@ -2,7 +2,9 @@ import React, { useState, useRef } from 'react'
 import Axios from 'axios'
 
 import InputStatus from "./inputStatus"
-//import FormConfirmationBanner from "./formConfirmationBanner"
+import FormConfirmationBanner from "./formConfirmationBanner"
+import greenCheckmarkIcon from "../images/icon-checkmark.svg"
+import invalidIcon from "../images/icon-invalid.svg"
 
 const ContactForm = () => {
     const [name, setName] = useState('')
@@ -138,7 +140,7 @@ const ContactForm = () => {
     }
 
     return (
-        <div className="form-container bg--black-tr border-radius">
+        <div className="form-container bg--black-tr border-radius border-shadow">
             <div className="">
                 <form onSubmit={e => handleSubmit(e)} autoComplete="off">
                     <div id="nab-container" className={`goodybag${isRobot ? " goodybag--is-visible" : ""}`}>
@@ -192,18 +194,21 @@ const ContactForm = () => {
                             setAddress(e.target.value);
                         }} type="text" name="address" id="address-field" value={address} autoComplete="new-password" className="goodybag"/>
 
-                    <div className={`${bannerIsLoading ? " btn--disabled" : ""}`}>
-                        <button type="submit" className={`btn btn--red${bannerIsLoading ? " btn--loading" : ""} `} disabled={bannerIsLoading}>{ 
-                                bannerIsLoading ? <div className="loading-icon"><div></div></div> : "send"
-                                }</button>
+                    <div className="form__btn-group">
+                        <button type="submit" className={`btn btn--red${bannerIsLoading ? " btn--loading" : ""} `} disabled={bannerIsLoading}>
+                            { 
+                                bannerIsLoading ? <div className="loading-icon"><div></div></div> :
+                                bannerIsVisible ? <img src={wasSent ? greenCheckmarkIcon : invalidIcon} alt={wasSent ? "valid" : "invalid"} style={wasSent ? {transform: "translateY(3px)"} : {}}/> : 
+                                "send"
+                            }
+                        </button>
+                        <FormConfirmationBanner isLoading={bannerIsLoading} wasSent={wasSent} isVisible={bannerIsVisible} />
                     </div>
                 
                 </form>
 
-        </div>
-            <div className="">
-            {/* <FormConfirmationBanner isLoading={bannerIsLoading} wasSent={wasSent} isVisible={bannerIsVisible} /> */}
-          </div>
+            </div>
+
         </div>
         
     )

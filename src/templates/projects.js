@@ -15,7 +15,7 @@ const Projects = ({ data }) => {
       <Seo title="projects" />
       <div className="section-container">
         <section className="section">
-            <div className="section__content section__content--large bg--black-tr border-radius">
+            <div className="section__content section__content--large bg--black-tr border-radius border-shadow">
                 <h1 className="section__text-title color--red">my projects.</h1>
                 <ProjectPool projects={projects} />
             </div>

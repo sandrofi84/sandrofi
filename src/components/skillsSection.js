@@ -3,7 +3,7 @@ import React from 'react'
 const SkillsSection = () => {
     return (
         <section className="section">
-            <div className="section__content bg--black-tr border-radius">
+            <div className="section__content bg--black-tr border-radius border-shadow">
                 
                 <h1 className="section__text-title color--red">my skills.</h1>
                 

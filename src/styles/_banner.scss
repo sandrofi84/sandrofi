@@ -1,0 +1,24 @@
+.banner {
+  display: none;
+  padding: 6px 15px;
+  max-width: max-content;
+  font-size: 1.5rem;
+  background-color: white;
+  transform-origin: 0% 50%;
+  transform: rotateY(90deg);
+  animation: flip 1s ease-out 0s forwards;
+
+  &--is-visible {
+    display: block;
+  }
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateY(90deg);
+  }
+
+  100% {
+    transform: rotateY(0deg);
+  }
+}
