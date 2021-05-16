@@ -45,10 +45,14 @@
 
   &-card {
     position: relative;
-    width: 30%;
+    width: 100%;
     max-width: 340px;
     min-width: 250px;
     margin: 10px;
+
+    @media (min-width: 725px) {
+      width: 30%;
+    }
 
     &:hover {
       > div:first-of-type {
