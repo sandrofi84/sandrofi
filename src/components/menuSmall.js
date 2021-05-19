@@ -7,7 +7,7 @@ const MenuSmall = (props) => {
     const { appState, setAppState, isVisible, toggleMenu } = props;
     const activeStyle = useMemo(()=>({ color: "black" }))
     const ref = useRef();
-    const divStyle = {zIndex: "5", position: "absolute", top: "0", left: "0", height: "100vh", width: "100vw", backgroundColor: "rgba(255, 0, 0, 0.8)"};
+    const divStyle = {zIndex: "5", position: "absolute", top: "0", left: "0", height: "100vh", width: "100vw", backgroundColor: "rgba(255, 0, 0, 0.9)"};
     const ulStyle = {padding: "15vh 0 25vh 0", height: "100vh", display: "flex", flexFlow: "column", justifyContent: "space-around", listStyle: "none"};
     const liStyle = {margin: "auto", textAlign: "center"};
 

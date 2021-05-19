@@ -4,11 +4,13 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import githubIcon from '../images/icon-github.png'
 import globeIcon from '../images/icon-website-globe.png'
 
-const SingleProjectCard = ({project, slug}) => {
+import makeDelay from '../utilities/make-delay'
+
+const SingleProjectCard = ({project, slug, delay}) => {
     const {title, excerpt, featureImage, techUsed, websiteLink, githubLink} = project
     return (
-        <div className="project-card">
-            <div className="project-card__overlay">
+        <div className="project-card bg--black-tr border-radius animation--slide-in" style={makeDelay(delay + 1)}>
+            <div className="project-card__overlay border-radius">
                 <div className="project-card__overlay-content">
                     <Link to={`/projects/${slug}`} className="btn btn--transparent btn--centered">
                         see project

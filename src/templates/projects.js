@@ -5,6 +5,8 @@ import { graphql, Link } from 'gatsby'
 import Seo from "../components/seo.js"
 import ProjectPool from '../components/projectPool.js'
 
+import makeDelay from '../utilities/make-delay'
+
 const Projects = ({ data }) => {
 
     const projects = data.allMdx.edges;
@@ -15,8 +17,8 @@ const Projects = ({ data }) => {
       <Seo title="projects" />
       <div className="section-container">
         <section className="section">
-            <div className="section__content section__content--large bg--black-tr border-radius border-shadow">
-                <h1 className="section__text-title color--red">my projects.</h1>
+            <div className="section__content section__content--large">
+                <h1 className="section__text-title section__text--centered color--red animation--slide-in" style={makeDelay(0)}>my projects.</h1>
                 <ProjectPool projects={projects} />
             </div>
         </section>

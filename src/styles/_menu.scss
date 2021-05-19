@@ -65,6 +65,7 @@
   height: 23px;
   width: max-content;
   transition: transform 0.2s ease-out;
+  cursor: pointer;
 
   &::before {
     display: block;

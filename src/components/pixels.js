@@ -2,13 +2,12 @@ import React, { useLayoutEffect, useMemo, useRef, useEffect, useState } from 're
 import { useFrame, useLoader, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
 import usePrevious from '../hooks/usePrevious'
-import { MathUtils } from 'three'
 
 function randomize(factor) {
     return Math.sin(Math.random() * 1000) * factor
 }
 
-const Pixels = ({appState, pictures, width = 150, height = 150}) => {
+const Pixels = ({appState, pictures, width = 160, height = 100}) => {
     const [imgIndex, setImgIndex] = useState(()=>{
         switch(appState) {
             case "/":
@@ -24,10 +23,13 @@ const Pixels = ({appState, pictures, width = 150, height = 150}) => {
         }})
     const [isExpanding, setIsExpanding] = useState(true)
     const [counter, setCounter] = useState(0)
-    const { invalidate } = useThree()    
+    const { invalidate } = useThree()
     const mesh = useRef()
     const prevImgIndex = usePrevious(imgIndex)
-    console.log(`Pixels, counter is ${counter} and appState is ${appState}`)
+    const [ windowRatio, setWindowRatio ] = useState(window.innerWidth / window.innerHeight)
+    const [ ratioHasChanged, setRatioHasChanged ] = useState(false) 
+
+    console.log(`Pixels, width is ${width} and height is ${width / windowRatio}`)
 
     const [ tempObject, tempPosVector, initialPosVector, finalPosVector, tempMatrix, currentColor, finalColor ] = useMemo(() => {
         console.log("generating vectors")
@@ -37,15 +39,25 @@ const Pixels = ({appState, pictures, width = 150, height = 150}) => {
     const canvas = useMemo(() => {
         console.log("log in Canvas")
         const canvas = document.createElement('canvas')
-        canvas.width = width
-        canvas.height = height
 
+        if (windowRatio > 1.6) {
+            canvas.width = width
+            canvas.height = Math.round(width / windowRatio)
+        } else if (windowRatio >= 1 && windowRatio <= 1.6) {
+            canvas.width = width
+            canvas.height = height
+        } else {
+            canvas.width = Math.round(height * windowRatio)
+            canvas.height = height
+        }
+        
         return canvas
-    }, [width, height])
-    
-    
 
-    const loadedPics = useLoader(THREE.ImageLoader, pictures)
+    }, [windowRatio, width, height])
+    
+    
+    console.log(windowRatio)
+    const loadedPics = useLoader(THREE.ImageLoader, windowRatio > .7 ? pictures.landscape : pictures.portrait)
 
     const dataArray = useMemo(() => {
         console.log("log in imageData Generator")
@@ -100,6 +112,8 @@ const Pixels = ({appState, pictures, width = 150, height = 150}) => {
         return tempPixels
     }, [canvas, dataArray])
 
+    console.log(pixelArray.length)
+
     // We iterate through the pixel array to find the first common non-transparent pixel
     // between all the pictures. This will be useful during the animation in case any
     // of the pictures have transparent pixels.
@@ -133,6 +147,19 @@ const Pixels = ({appState, pictures, width = 150, height = 150}) => {
                 break
         }
     },[appState])
+
+    useEffect(() => {
+        const setNewRatio = () => {
+            setWindowRatio(window.innerWidth / window.innerHeight)
+            setRatioHasChanged(true)
+        }
+
+        window.addEventListener("resize", setNewRatio)
+
+        return () => {
+            window.removeEventListener("resize", setNewRatio)
+        }
+    }, [])
 
     useEffect(() => {
         console.log("first effect")
@@ -172,8 +199,8 @@ const Pixels = ({appState, pictures, width = 150, height = 150}) => {
         console.log("useLayout ran")
 
         // This sets the initial color and position of the pixels ONLY on the first render
-        if (mesh?.current && prevImgIndex === null) {
-            console.log("prev index is NULL")
+        if (mesh?.current && (prevImgIndex === null || ratioHasChanged)) {
+            console.log("prev index is NULL or ratio has changed")
             pixelArray.forEach(({color, mosaicPosition}, i) => {
                 
                 // Set initial color of each pixel
@@ -201,6 +228,10 @@ const Pixels = ({appState, pictures, width = 150, height = 150}) => {
             mesh.current.instanceColor.needsUpdate = true
             mesh.current.instanceMatrix.needsUpdate = true
             invalidate()
+
+            if (ratioHasChanged) {
+                setRatioHasChanged(false)
+            }
         }
         
 
@@ -287,7 +318,7 @@ const Pixels = ({appState, pictures, width = 150, height = 150}) => {
 
     return (
         <>
-            <instancedMesh ref={mesh} args={[null, null, pixelArray.length]}>
+            <instancedMesh key={pixelArray.length} ref={mesh} args={[null, null, pixelArray.length]}>
                 <circleBufferGeometry args={[.1,16]} />
                 <meshStandardMaterial />
             </instancedMesh>

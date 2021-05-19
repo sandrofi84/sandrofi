@@ -6,6 +6,8 @@ import FormConfirmationBanner from "./formConfirmationBanner"
 import greenCheckmarkIcon from "../images/icon-checkmark.svg"
 import invalidIcon from "../images/icon-invalid.svg"
 
+import makeDelay from '../utilities/make-delay'
+
 const ContactForm = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -140,7 +142,7 @@ const ContactForm = () => {
     }
 
     return (
-        <div className="form-container bg--black-tr border-radius border-shadow">
+        <div className="form-container">
             <div className="">
                 <form onSubmit={e => handleSubmit(e)} autoComplete="off">
                     <div id="nab-container" className={`goodybag${isRobot ? " goodybag--is-visible" : ""}`}>
@@ -152,8 +154,8 @@ const ContactForm = () => {
                     
 
                     <div className="form-group">
-                        <label htmlFor="name-field" className="form-group__label color--red">your name</label>
-                        <div className={`form-group__input${nameIsValid ? " form-group__input--is-valid" : ""}`}>
+                        <label htmlFor="name-field" className="form-group__label color--red animation--slide-in" style={makeDelay(0)}>your name.</label>
+                        <div className={`form-group__input${nameIsValid ? " form-group__input--is-valid" : ""} animation--slide-in`} style={makeDelay(1)}>
                             <input ref={nameField} onChange={e => {
                                 setName(e.target.value);
                                 setNameIsValid(validateName(e.target.value));
@@ -163,8 +165,8 @@ const ContactForm = () => {
                     </div>
                     
                     <div className="form-group">
-                        <label htmlFor="email-field" className="form-group__label color--red">your email</label>
-                        <div className={`form-group__input${emailIsValid ? " form-group__input--is-valid" : ""}`}>
+                        <label htmlFor="email-field" className="form-group__label color--red animation--slide-in" style={makeDelay(2)}>your email.</label>
+                        <div className={`form-group__input${emailIsValid ? " form-group__input--is-valid" : ""} animation--slide-in`} style={makeDelay(3)}>
                             <input ref={emailField} onChange={e => {
                                 setEmail(e.target.value);
                                 setEmailIsValid(validateEmail(e.target.value));
@@ -174,8 +176,8 @@ const ContactForm = () => {
                     </div>
                 
                     <div className="form-group">
-                        <label htmlFor="message-field" className="form-group__label color--red">your message</label>
-                        <div className={`form-group__input${messageIsValid ? " form-group__input--is-valid" : ""}`}>
+                        <label htmlFor="message-field" className="form-group__label color--red animation--slide-in" style={makeDelay(4)}>your message.</label>
+                        <div className={`form-group__input${messageIsValid ? " form-group__input--is-valid" : ""} animation--slide-in`} style={makeDelay(5)}>
                             <textarea ref={messageField} onChange={e => {
                                 setMessage(e.target.value);
                                 setMessageIsValid(validateMessage(e.target.value));
@@ -194,7 +196,7 @@ const ContactForm = () => {
                             setAddress(e.target.value);
                         }} type="text" name="address" id="address-field" value={address} autoComplete="new-password" className="goodybag"/>
 
-                    <div className="form__btn-group">
+                    <div className="form__btn-group animation--slide-in" style={makeDelay(6)}>
                         <button type="submit" className={`btn btn--red${bannerIsLoading ? " btn--loading" : ""} `} disabled={bannerIsLoading} style={!bannerIsLoading && bannerIsVisible ? {backgroundColor: "red"} : {}}>
                             { 
                                 bannerIsLoading ? <div className="loading-icon"><div></div></div> :

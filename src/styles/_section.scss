@@ -1,8 +1,14 @@
+@use "variables";
+
 .section {
   display: flex;
   width: 100%;
   min-height: 100%;
-  align-items: center;
+  align-items: flex-end;
+
+  @media (min-width: 550px) {
+    align-items: center;
+  }
 
   &-container {
     z-index: 1;
@@ -14,18 +20,21 @@
     width: 100vw;
     padding: 0 5%;
 
-    @media (min-width: 620px) {
+    @media (min-width: 550px) {
       padding: 0 10%;
     }
   }
 
   &__content {
-    width: max-content;
+    margin: 150px auto 80px auto;
+    width: 100%;
     max-width: 350px;
     height: max-content;
-    margin-top: 150px;
-    margin-bottom: 80px;
     padding: 20px;
+
+    @media (min-width: 550px) {
+      margin: 150px 0 80px 0;
+    }
 
     &--large {
       width: 100%;
@@ -41,12 +50,30 @@
       margin-left: auto;
       margin-right: auto;
     }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+      padding: 2px 5px;
+      width: 100%;
+      max-width: max-content;
+      background-color: variables.$trBlack;
+    }
   }
 
   &__text {
     &-title {
       margin-bottom: 15px;
       font-size: 2rem;
+    }
+
+    &-subtitle {
+      margin-bottom: 20px;
+      font-size: 1.5rem;
     }
 
     &-group {
@@ -60,6 +87,11 @@
     &-small {
       margin-bottom: 9px;
       font-size: 1.1rem;
+    }
+
+    &--centered {
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 }
