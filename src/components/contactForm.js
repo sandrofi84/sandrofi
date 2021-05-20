@@ -5,6 +5,7 @@ import InputStatus from "./inputStatus"
 import FormConfirmationBanner from "./formConfirmationBanner"
 import greenCheckmarkIcon from "../images/icon-checkmark.svg"
 import invalidIcon from "../images/icon-invalid.svg"
+import playIcon from '../images/play.svg'
 
 import makeDelay from '../utilities/make-delay'
 
@@ -202,6 +203,11 @@ const ContactForm = () => {
                                 bannerIsLoading ? <div className="loading-icon"><div></div></div> :
                                 bannerIsVisible ? <img src={wasSent ? greenCheckmarkIcon : invalidIcon} alt={wasSent ? "valid" : "invalid"} style={wasSent ? {transform: "translateY(3px)"} : {}}/> : 
                                 "send"
+                            }
+                            {
+                                nameIsValid && emailIsValid && messageIsValid &&
+
+                                <span className="animation--shake" style={{display: "inline-block"}}><img src={playIcon} alt="" className="icon--play"/></span>
                             }
                         </button>
                         <FormConfirmationBanner isLoading={bannerIsLoading} wasSent={wasSent} isVisible={bannerIsVisible} />

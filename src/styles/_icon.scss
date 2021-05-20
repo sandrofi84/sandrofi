@@ -1,0 +1,15 @@
+.icon {
+  &--play {
+    width: 25px;
+    height: 25px;
+    filter: brightness(100);
+    transform: translate(13px, 5px);
+  }
+
+  &--ff {
+    width: 25px;
+    height: 25px;
+    filter: brightness(100);
+    transform: translate(5px, 5px);
+  }
+}

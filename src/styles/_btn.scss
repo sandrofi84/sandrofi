@@ -12,6 +12,11 @@
     &:hover {
       color: red;
       background-color: white;
+
+      .icon--ff,
+      .icon--play {
+        filter: brightness(1);
+      }
     }
   }
 

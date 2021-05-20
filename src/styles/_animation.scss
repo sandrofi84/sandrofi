@@ -4,16 +4,43 @@
     transform: translateX(100vw);
     animation: 0.2s ease-out 1.5s forwards slide-in;
   }
+
+  &--shake {
+    animation: 5s linear both infinite shake;
+  }
 }
 
 @keyframes slide-in {
   0% {
     opacity: 0;
     transform: translateX(100vw);
+    font-style: normal;
+  }
+
+  99% {
+    font-style: normal;
   }
 
   100% {
     opacity: 1;
     transform: translateX(0px);
+    font-style: italic;
+  }
+}
+
+@keyframes shake {
+  0%,
+  55%,
+  70%,
+  100% {
+    transform: translateX(0);
+  }
+  57%,
+  63% {
+    transform: translateX(-2px);
+  }
+  60%,
+  65% {
+    transform: translateX(2px);
   }
 }
