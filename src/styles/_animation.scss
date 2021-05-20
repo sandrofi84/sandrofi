@@ -8,6 +8,10 @@
   &--shake {
     animation: 5s linear both infinite shake;
   }
+
+  &--flash {
+    animation: 3s linear both infinite flash;
+  }
 }
 
 @keyframes slide-in {
@@ -42,5 +46,21 @@
   60%,
   65% {
     transform: translateX(2px);
+  }
+}
+
+@keyframes flash {
+  0%,
+  15%,
+  35%,
+  65%,
+  85%,
+  100% {
+    opacity: 1;
+  }
+
+  25%,
+  75% {
+    opacity: 0;
   }
 }

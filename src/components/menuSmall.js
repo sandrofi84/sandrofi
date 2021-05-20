@@ -30,19 +30,19 @@ const MenuSmall = (props) => {
                     <ul className="header__nav__list" style={ulStyle}>
                         <li className="header__nav__list-item" style={liStyle}>
                             <Link to="/" onClick={() => setAppState("/")}>home</Link>
-                            <span style={appState === "/" ? {opacity: "1", color: "white"} : {opacity: "0"}}>_</span>
+                            <span className={`${appState === "/" ? "animation--flash" : ""}`} style={appState === "/" ? {display: "inline-block", opacity: "1", color: "white"} : {opacity: "0"}}>_</span>
                         </li>
                         <li className="header__nav__list-item" style={liStyle}>
                             <Link to="/skills/" onClick={() => setAppState("/skills/")}>skills</Link>
-                            <span style={appState === "/skills/" ? {opacity: "1", color: "white"} : {opacity: "0"}}>_</span>
+                            <span className={`${appState === "/skills/" ? "animation--flash" : ""}`} style={appState === "/skills/" ? {display: "inline-block", opacity: "1", color: "white"} : {opacity: "0"}}>_</span>
                         </li>
                         <li className="header__nav__list-item" style={liStyle}>
                             <Link to="/projects/" onClick={() => setAppState("/projects/")}>projects</Link>
-                            <span style={appState === "/projects/" ? {opacity: "1", color: "white"} : {opacity: "0"}}>_</span>
+                            <span className={`${appState === "/projects/" ? "animation--flash" : ""}`} style={appState === "/projects/" ? {display: "inline-block", opacity: "1", color: "white"} : {opacity: "0"}}>_</span>
                         </li>
                         <li className="header__nav__list-item" style={liStyle}>
                             <Link to="/contact/" onClick={() => setAppState("/contact/")}>contact</Link>
-                            <span style={appState === "/contact/" ? {opacity: "1", color: "white"} : {opacity: "0"}}>_</span>
+                            <span className={`${appState === "/contact/" ? "animation--flash" : ""}`} style={appState === "/contact/" ? {display: "inline-block", opacity: "1", color: "white"} : {opacity: "0"}}>_</span>
                         </li>
                     </ul>
                 </nav>

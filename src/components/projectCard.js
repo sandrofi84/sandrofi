@@ -19,14 +19,14 @@ const SingleProjectCard = ({project, slug, delay}) => {
                     { websiteLink && 
                         <div className="project-card__overlay__link-group">
                             <img src={globeIcon} alt="web" className="project-card__overlay__link-icon project-card__overlay__link-icon--inverted"/> 
-                            <a href={websiteLink} className="project-card__overlay__link color--white">Visit website</a>
+                            <a href={websiteLink} target="_blank" className="project-card__overlay__link color--white">Visit website</a>
                         </div>
                     }
                     
                     { githubLink && 
                         <div className="project-card__overlay__link-group">
                             <img src={githubIcon} alt="github" className="project-card__overlay__link-icon"/> 
-                            <a href={websiteLink} className="project-card__overlay__link color--white">See source code</a>
+                            <a href={githubLink} target="_blank" className="project-card__overlay__link color--white">See source code</a>
                         </div>
                     }
                 </div>
