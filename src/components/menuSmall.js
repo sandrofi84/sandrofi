@@ -2,6 +2,8 @@ import React, { useRef, useMemo } from 'react'
 import { Link } from "gatsby"
 import { CSSTransition } from 'react-transition-group'
 
+import githubIcon from '../images/icon-github.png'
+
 const MenuSmall = (props) => {
 
     const { appState, setAppState, isVisible, toggleMenu } = props;
@@ -43,6 +45,9 @@ const MenuSmall = (props) => {
                         <li className="header__nav__list-item" style={liStyle}>
                             <Link to="/contact/" onClick={() => setAppState("/contact/")}>contact</Link>
                             <span className={`${appState === "/contact/" ? "animation--flash" : ""}`} style={appState === "/contact/" ? {display: "inline-block", opacity: "1", color: "white"} : {opacity: "0"}}>_</span>
+                        </li>
+                        <li className="header__nav__list-item" style={liStyle}>
+                            <a href="https://github.com/sandrofi84"><img src={githubIcon} alt="github"/></a>
                         </li>
                     </ul>
                 </nav>

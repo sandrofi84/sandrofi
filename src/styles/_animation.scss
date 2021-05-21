@@ -18,17 +18,11 @@
   0% {
     opacity: 0;
     transform: translateX(100vw);
-    font-style: normal;
-  }
-
-  99% {
-    font-style: normal;
   }
 
   100% {
     opacity: 1;
     transform: translateX(0px);
-    font-style: italic;
   }
 }
 
