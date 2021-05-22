@@ -15,7 +15,7 @@ const HomeSection = () => {
                 <h2 className="section__text-subtitle color--white bg--black-tr animation--slide-in" style={makeDelay(1)}>
                     I like to make websites.
                 </h2>
-                <Link to="/projects/" onClick={() => setAppState("/projects/")} className="btn btn--red animation--slide-in" style={makeDelay(2)}>see my projects <span className="animation--shake" style={{display: "inline-block"}}><img src={ffIcon} alt="" className="icon--ff"/></span></Link>
+                <Link to="/projects/" onClick={() => setAppState("/projects/")} className="btn btn--red animation--slide-in" style={makeDelay(2)}>see my projects <span className="animation--shake" style={{display: "inline-block"}}><img src={ffIcon} alt="" className="icon-ff"/></span></Link>
             </div>
         </section>
     )

@@ -16,8 +16,10 @@ const Pixels = ({appState, pictures, width = 160, height = 100}) => {
                 return 1
             case "/projects/":
                 return 2
-            case "/contact/":
+            case "/about/":
                 return 3
+            case "/contact/":
+                return 4
             default:
                 return 0
         }})
@@ -29,7 +31,7 @@ const Pixels = ({appState, pictures, width = 160, height = 100}) => {
     const [ windowRatio, setWindowRatio ] = useState(window.innerWidth / window.innerHeight)
     const [ ratioHasChanged, setRatioHasChanged ] = useState(false) 
 
-    console.log(`Pixels, width is ${width} and height is ${width / windowRatio}`)
+    console.log(`Pixels, width is ${width} and height is ${width / windowRatio}, appState is ${appState}, index is ${imgIndex}`)
 
     const [ tempObject, tempPosVector, initialPosVector, finalPosVector, tempMatrix, currentColor, finalColor ] = useMemo(() => {
         console.log("generating vectors")
@@ -58,7 +60,7 @@ const Pixels = ({appState, pictures, width = 160, height = 100}) => {
     
     console.log(windowRatio)
     const loadedPics = useLoader(THREE.ImageLoader, windowRatio > .7 ? pictures.landscape : pictures.portrait)
-
+    console.log("loadedPics is ",loadedPics);
     const dataArray = useMemo(() => {
         console.log("log in imageData Generator")
         let arr = [] 
@@ -138,8 +140,11 @@ const Pixels = ({appState, pictures, width = 160, height = 100}) => {
             case "/projects/":
                 setImgIndex(2)
                 break
-            case "/contact/":
+            case "/about/":
                 setImgIndex(3)
+                break
+            case "/contact/":
+                setImgIndex(4)
                 break
             default:
                 setImgIndex(0)

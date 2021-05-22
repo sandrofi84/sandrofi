@@ -6,6 +6,8 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 // Components
 import Seo from "../components/seo.js"
 
+import rwIcon from '../images/fastforward.svg'
+
 const SingleProject = ({ data }) => {
 
   const { slug, id, body, frontmatter } = data.mdx;
@@ -28,7 +30,7 @@ const SingleProject = ({ data }) => {
                   <MDXRenderer localImages={embeddedImages} localVideos={embeddedVideos}>{body}</MDXRenderer>
                 </div>
 
-                <Link to="/projects/" className="btn btn--red btn--centered">back to projects</Link>
+                <Link to="/projects/" className="btn btn--red btn--centered"><span className="animation--shake" style={{display: "inline-block"}}><img src={rwIcon} alt="" className="icon-rw"/></span> back to projects</Link>
             </div>
         </section>
       </div>

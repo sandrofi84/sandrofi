@@ -207,7 +207,7 @@ const ContactForm = () => {
                             {
                                 nameIsValid && emailIsValid && messageIsValid &&
 
-                                <span className="animation--shake" style={{display: "inline-block"}}><img src={playIcon} alt="" className="icon--play"/></span>
+                                <span className="animation--shake" style={{display: "inline-block"}}><img src={playIcon} alt="" className="icon-play"/></span>
                             }
                         </button>
                         <FormConfirmationBanner isLoading={bannerIsLoading} wasSent={wasSent} isVisible={bannerIsVisible} />

@@ -13,8 +13,9 @@
       color: red;
       background-color: white;
 
-      .icon--ff,
-      .icon--play {
+      .icon-ff,
+      .icon-rw,
+      .icon-play {
         filter: brightness(1);
       }
     }
@@ -36,5 +37,9 @@
 
   &--loading {
     background-color: white;
+  }
+
+  &--v-margin {
+    margin: 15px 0px;
   }
 }

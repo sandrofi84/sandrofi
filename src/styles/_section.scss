@@ -10,6 +10,12 @@
     align-items: center;
   }
 
+  &--about {
+    span {
+      color: variables.$lightOrange;
+    }
+  }
+
   &-container {
     z-index: 1;
     position: absolute;
@@ -28,7 +34,7 @@
   &__content {
     margin: 150px auto 80px auto;
     width: 100%;
-    max-width: 350px;
+    max-width: 500px;
     height: max-content;
     padding: 20px;
 
@@ -76,6 +82,10 @@
       font-size: 1.5rem;
     }
 
+    &-link {
+      text-decoration: underline;
+    }
+
     &-group {
       margin-bottom: 20px;
 
@@ -87,6 +97,11 @@
     &-small {
       margin-bottom: 9px;
       font-size: 1.1rem;
+    }
+
+    &-medium {
+      margin-bottom: 9px;
+      font-size: 1.5rem;
     }
 
     &--centered {

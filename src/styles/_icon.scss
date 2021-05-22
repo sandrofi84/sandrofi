@@ -1,15 +1,32 @@
 .icon {
-  &--play {
+  &-play {
     width: 25px;
     height: 25px;
     filter: brightness(100);
     transform: translate(13px, 5px);
   }
 
-  &--ff {
+  &-ff {
     width: 25px;
     height: 25px;
     filter: brightness(100);
     transform: translate(5px, 5px);
+  }
+
+  &-rw {
+    width: 25px;
+    height: 25px;
+    filter: brightness(100);
+    transform: translate(-5px, 5px) rotateZ(180deg);
+  }
+
+  &-qmarks {
+    &--opening {
+      transform: scale(0.7) translateY(-10px);
+    }
+
+    &--closing {
+      transform: scale(0.7) translateY(10px) rotate(180deg);
+    }
   }
 }
