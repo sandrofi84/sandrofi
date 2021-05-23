@@ -4,6 +4,8 @@ import { Canvas } from '@react-three/fiber'
 
 // Components
 import Pixels from "../components/pixels.js"
+import { ErrorBoundary } from "react-error-boundary"
+import ErrorFallback from "./errorFallback"
 
 // Context
 import StateContext from "../context/stateContext"
@@ -31,12 +33,14 @@ const BackgroundCanvas = () => {
 
     return (
         <div className="canvas-container">
-            <Canvas className="canvas" camera={{position: [0,0,9]}} frameloop="demand">
-                <ambientLight />
-                <Suspense fallback={null}>
-                    <Pixels width={288} height={180} pictures={pictures} appState={appState} />
-                </Suspense>
-            </Canvas>
+            <ErrorBoundary fallback={<ErrorFallback />}>
+                <Canvas className="canvas" camera={{position: [0,0,9]}} frameloop="demand">
+                    <ambientLight />
+                    <Suspense fallback={null}>
+                        <Pixels width={288} height={180} pictures={pictures} appState={appState} />
+                    </Suspense>
+                </Canvas>
+            </ErrorBoundary>
         </div>
     )
 }

@@ -1,0 +1,16 @@
+.fallback {
+  &-container {
+    min-height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  &__picture {
+    /* "position: static" allows the picture to be full-height, while retaining
+    the aspect ratio */
+    position: static;
+    height: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+  }
+}
