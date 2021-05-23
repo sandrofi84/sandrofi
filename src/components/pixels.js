@@ -189,7 +189,7 @@ const Pixels = ({appState, pictures, width = 160, height = 100}) => {
             // Invalidate kick-starts the next animation
             invalidate()
         }
-    },[imgIndex, prevImgIndex, invalidate])
+    },[imgIndex, invalidate])
 
     useEffect(() => {
         // The counter decreases every time the pixels invert their direction
