@@ -1,10 +1,10 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import { Link } from 'gatsby'
 
 const MenuLarge = (props) => {
 
     const { appState, setAppState } = props
-    const activeStyle = useMemo(()=>({ color: "red" }))
+    const activeStyle = { color: "red" }
 
     return (
         <nav className="header__nav menu-large">

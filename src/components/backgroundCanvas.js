@@ -27,7 +27,7 @@ const BackgroundCanvas = () => {
     const pictures = useMemo(() => ({
         landscape: [landscapeHome, landscapeSkills, landscapeProjects, landscapeAbout, landscapeContact],
         portrait: [portraitHome, portraitSkills, portraitProjects, portraitAbout, portraitContact]
-    }))
+    }), [])
 
     return (
         <div className="canvas-container">

@@ -37,6 +37,7 @@
     max-width: 500px;
     height: max-content;
     padding: 20px;
+    overflow-x: hidden;
 
     @media (min-width: 550px) {
       margin: 150px 0 80px 0;

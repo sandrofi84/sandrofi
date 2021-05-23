@@ -28,7 +28,7 @@ const AboutSection = () => {
 
                 <p className="section__text-medium color--white animation--slide-in" style={makeDelay(6)}>But I soon realised <span>I’d better learn Javascript</span> if I wanted to be able to build my own websites.</p>
 
-                <p className="section__text-medium color--white animation--slide-in" style={makeDelay(7)}>Many courses - and todo apps - later, I <span>published my first website</span>, for my girlfriend’s training business, <a href="https://www.hodostraining.com/" target="_blank" className="section__text-link color--orange">Hodos Training</a>.</p>
+                <p className="section__text-medium color--white animation--slide-in" style={makeDelay(7)}>Many courses - and todo apps - later, I <span>published my first website</span>, for my girlfriend’s training business, <a href="https://www.hodostraining.com/" target="_blank" rel="noreferrer" className="section__text-link color--orange">Hodos Training</a>.</p>
 
                 <p className="section__text-medium color--white animation--slide-in" style={makeDelay(8)}>In preparation for that project, I discovered the JAMstack and, since I wanted to practice my React skills, <span>I decided to try Gatsby</span>.</p>
 

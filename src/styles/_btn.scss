@@ -39,6 +39,11 @@
     background-color: white;
   }
 
+  &--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
   &--v-margin {
     margin: 15px 0px;
   }

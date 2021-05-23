@@ -6,6 +6,7 @@ import FormConfirmationBanner from "./formConfirmationBanner"
 import greenCheckmarkIcon from "../images/icon-checkmark.svg"
 import invalidIcon from "../images/icon-invalid.svg"
 import playIcon from '../images/play.svg'
+import pauseIcon from '../images/pause.svg'
 
 import makeDelay from '../utilities/make-delay'
 
@@ -68,7 +69,7 @@ const ContactForm = () => {
             setBannerIsVisible(true);
 
             try {
-                const response = await Axios.post(`https://sandrofi.vercel.app/api/ses-send-email`, { name, email, message });
+                const response = await Axios.post(`/api/ses-send-email`, { name, email, message });
                 console.log(response)
 
                 if (response.status === 200) {
@@ -112,7 +113,7 @@ const ContactForm = () => {
                 setBannerIsVisible(true);
     
                 try {
-                    const response = await Axios.post("/.netlify/functions/ses-send-email", { name, email, message });
+                    const response = await Axios.post("/api/ses-send-email", { name, email, message });
                     if (response.status === 200) {
                         setWasSent(true);
                         setBannerIsLoading(false);
@@ -161,7 +162,7 @@ const ContactForm = () => {
                                 setName(e.target.value);
                                 setNameIsValid(validateName(e.target.value));
                                 }} type="text" name="name" id="name-field" value={name} />
-                            <InputStatus isVisible={statusIsVisible} isValid={nameIsValid} />
+                            <InputStatus isValid={nameIsValid} />
                         </div>
                     </div>
                     
@@ -172,7 +173,7 @@ const ContactForm = () => {
                                 setEmail(e.target.value);
                                 setEmailIsValid(validateEmail(e.target.value));
                             }} type="email" name="email" id="email-field" value={email} autoComplete="new-password" />
-                            <InputStatus isVisible={statusIsVisible} isValid={emailIsValid} />
+                            <InputStatus isValid={emailIsValid} />
                         </div>
                     </div>
                 
@@ -183,7 +184,7 @@ const ContactForm = () => {
                                 setMessage(e.target.value);
                                 setMessageIsValid(validateMessage(e.target.value));
                             }} name="message" id="message-field" cols="33" rows="7" value={message} autoComplete="new-password" />
-                            <InputStatus isVisible={statusIsVisible} isValid={messageIsValid} isLast={true} />
+                            <InputStatus isValid={messageIsValid} isLast={true} />
                         </div>
                     </div>
 
@@ -198,16 +199,14 @@ const ContactForm = () => {
                         }} type="text" name="address" id="address-field" value={address} autoComplete="new-password" className="goodybag"/>
 
                     <div className="form__btn-group animation--slide-in" style={makeDelay(6)}>
-                        <button type="submit" className={`btn btn--red${bannerIsLoading ? " btn--loading" : ""} `} disabled={bannerIsLoading} style={!bannerIsLoading && bannerIsVisible ? {backgroundColor: "red"} : {}}>
+                        <button type="submit" className={`btn btn--red${bannerIsLoading ? " btn--loading" : ""}${nameIsValid && emailIsValid && messageIsValid ? "" : " btn--disabled"}`} disabled={bannerIsLoading} style={!bannerIsLoading && bannerIsVisible ? {backgroundColor: "red"} : {}}>
                             { 
                                 bannerIsLoading ? <div className="loading-icon"><div></div></div> :
                                 bannerIsVisible ? <img src={wasSent ? greenCheckmarkIcon : invalidIcon} alt={wasSent ? "valid" : "invalid"} style={wasSent ? {transform: "translateY(3px)"} : {}}/> : 
                                 "send"
                             }
                             {
-                                nameIsValid && emailIsValid && messageIsValid &&
-
-                                <span className="animation--shake" style={{display: "inline-block"}}><img src={playIcon} alt="" className="icon-play"/></span>
+                                nameIsValid && emailIsValid && messageIsValid ? <span className="animation--shake" style={{display: "inline-block"}}><img src={playIcon} alt="" className="icon-play"/></span> : <span className="" style={{display: "inline-block"}}><img src={pauseIcon} alt="" className="icon-play"/></span>
                             }
                         </button>
                         <FormConfirmationBanner isLoading={bannerIsLoading} wasSent={wasSent} isVisible={bannerIsVisible} />

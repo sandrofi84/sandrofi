@@ -1,4 +1,4 @@
-import React, { useRef, useMemo } from 'react'
+import React, { useRef } from 'react'
 import { Link } from "gatsby"
 import { CSSTransition } from 'react-transition-group'
 

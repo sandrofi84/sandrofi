@@ -1,17 +1,24 @@
-import React from 'react'
+import React, { useContext } from 'react'
+
+
+// Components
 import { Link, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
-
-// Components
 import Seo from "../components/seo.js"
 
-import rwIcon from '../images/fastforward.svg'
+// Context
+import DispatchContext from '../context/dispatchContext'
+
+// Icons
+import ffIcon from '../images/fastforward.svg'
 
 const SingleProject = ({ data }) => {
 
-  const { slug, id, body, frontmatter } = data.mdx;
-  const { title, excerpt, featureImage, websiteLink, githubLink, techUsed, embeddedImages, embeddedVideos } = frontmatter;
+  const setAppState = useContext(DispatchContext)
+
+  const { body, frontmatter } = data.mdx;
+  const { title, featureImage, websiteLink, websiteLinkPretty, githubLink, githubLinkPretty, techUsed, embeddedImages, embeddedVideos } = frontmatter;
 
   return (
     <>
@@ -25,12 +32,26 @@ const SingleProject = ({ data }) => {
                 </div>
 
                 <h1 className="section__text-title color--red">{title}</h1>
+                {
+                  websiteLink &&
+                  <p>website: <a href={websiteLink} target="_blank" rel="noreferrer" className="color--orange">{websiteLinkPretty}</a></p>
+                }
+                {
+                  githubLink &&
+                  <p>website: <a href={githubLink} target="_blank" rel="noreferrer" className="color--orange">{githubLinkPretty}</a></p>
+                }
+                
+                <p>technologies: <span className="color--light-orange">{techUsed}</span></p>
 
                 <div className="project__body color--white">
                   <MDXRenderer localImages={embeddedImages} localVideos={embeddedVideos}>{body}</MDXRenderer>
                 </div>
 
-                <Link to="/projects/" className="btn btn--red btn--centered"><span className="animation--shake" style={{display: "inline-block"}}><img src={rwIcon} alt="" className="icon-rw"/></span> back to projects</Link>
+                <div className="project__btn-container">
+                  <Link to="/projects/" className="btn btn--red btn--v-margin"><span className="animation--shake" style={{display: "inline-block"}}><img src={ffIcon} alt="" className="icon-rw"/></span> back to projects</Link>
+                  <Link to="/contact/" onClick={() => setAppState("/contact/")} className="btn btn--red btn--v-margin">get in touch <span className="animation--shake" style={{display: "inline-block"}}><img src={ffIcon} alt="" className="icon-ff"/></span></Link>
+                </div>
+                
             </div>
         </section>
       </div>
@@ -43,12 +64,9 @@ export default SingleProject
 export const pageQuery = graphql`
     query SingleProjectQuery($id: String!) {
       mdx(id: {eq: $id}) {
-        slug
         body
-        id
         frontmatter {
           title
-          excerpt
           featureImage {
             childImageSharp {
               gatsbyImageData(width: 800)
@@ -63,7 +81,9 @@ export const pageQuery = graphql`
             publicURL
           }
           websiteLink
+          websiteLinkPretty
           githubLink
+          githubLinkPretty
           techUsed
         }
       }

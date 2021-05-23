@@ -43,6 +43,19 @@
     }
   }
 
+  &__btn-container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (min-width: 516px) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
   &-card {
     position: relative;
     width: 100%;

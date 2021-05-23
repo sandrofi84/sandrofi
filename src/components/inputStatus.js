@@ -3,7 +3,7 @@ import greenCheckmarkIcon from "../images/icon-checkmark.svg"
 import invalidIcon from "../images/icon-invalid.svg"
 
 const InputStatus = (props) => {
-    const {isValid, isVisible, isLast} = props
+    const {isValid, isLast} = props
 
 
     return (

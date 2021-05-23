@@ -34,7 +34,6 @@ const Pixels = ({appState, pictures, width = 160, height = 100}) => {
     console.log(`Pixels, width is ${width} and height is ${width / windowRatio}, appState is ${appState}, index is ${imgIndex}`)
 
     const [ tempObject, tempPosVector, initialPosVector, finalPosVector, tempMatrix, currentColor, finalColor ] = useMemo(() => {
-        console.log("generating vectors")
         return [new THREE.Object3D(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Matrix4(), new THREE.Color(), new THREE.Color()]
     }, [])
 
@@ -57,10 +56,8 @@ const Pixels = ({appState, pictures, width = 160, height = 100}) => {
 
     }, [windowRatio, width, height])
     
-    
-    console.log(windowRatio)
     const loadedPics = useLoader(THREE.ImageLoader, windowRatio > .7 ? pictures.landscape : pictures.portrait)
-    console.log("loadedPics is ",loadedPics);
+
     const dataArray = useMemo(() => {
         console.log("log in imageData Generator")
         let arr = [] 
@@ -148,7 +145,6 @@ const Pixels = ({appState, pictures, width = 160, height = 100}) => {
                 break
             default:
                 setImgIndex(0)
-                console.log("case default")
                 break
         }
     },[appState])
@@ -167,45 +163,44 @@ const Pixels = ({appState, pictures, width = 160, height = 100}) => {
     }, [])
 
     useEffect(() => {
-        console.log("first effect")
+
         // The animation runs once every time the user clicks on a different nav-link and
         // stops when the counter reaches 0
         if (prevImgIndex !== null) {
-            console.log("first effect counter is ", counter)
-            if (counter === 1) {
-                // In case the user clicks on a different nav-link before the animation is finished, 
-                // we invert the direction of the pixels and set the counter to 3. This allows the new
-                // animation to finish it's cycle
-                setCounter(3)
-                setIsExpanding(current => !current)
-            } else {
-                // If the counter is 0 when the user clicks on a nav-link, we set the counter to 2 to start
-                // a new animation cycle. While if the counter is 2 we do not change it at all.
-                setCounter(c => c === 0 ? 2 : c)
-            }
+            //console.log("first effect counter is ", counter)
 
-            // if (mesh?.current) {
-            //     // reset the rotation value of the picture
-            //     mesh.current.rotation.z = 0
-            // }
+            setCounter(c => {
+                if (c === 1) {
+                    // In case the user clicks on a different nav-link before the animation is finished, 
+                    // we invert the direction of the pixels and set the counter to 3. This allows the new
+                    // animation to finish it's cycle
+                    setIsExpanding(current => !current)
+                    return 3
+                } else if (c === 0) {
+                    // If the counter is 0 when the user clicks on a nav-link, we set the counter to 2 to start
+                    // a new animation cycle. 
+                    return 2
+                } else {
+                    // While if the counter is 2 we do not change it at all.
+                    return c
+                }
+            })
 
             // Invalidate kick-starts the next animation
             invalidate()
         }
-    },[imgIndex])
+    },[imgIndex, prevImgIndex, invalidate])
 
     useEffect(() => {
-        console.log("second effect counter is ", counter)
         // The counter decreases every time the pixels invert their direction
         setCounter(c => c > 0 ? c - 1 : c)
     }, [isExpanding])
 
     useLayoutEffect(() => {
-        console.log("useLayout ran")
 
         // This sets the initial color and position of the pixels ONLY on the first render
         if (mesh?.current && (prevImgIndex === null || ratioHasChanged)) {
-            console.log("prev index is NULL or ratio has changed")
+
             pixelArray.forEach(({color, mosaicPosition}, i) => {
                 
                 // Set initial color of each pixel
@@ -240,10 +235,10 @@ const Pixels = ({appState, pictures, width = 160, height = 100}) => {
         }
         
 
-    }, [pixelArray, finalColor, prevImgIndex, invalidate])
+    }, [pixelArray, finalColor, prevImgIndex, invalidate, finalPosVector, imgIndex, ratioHasChanged, tempObject])
 
     useFrame(() => {
-        console.log("useFrame")
+
         // This is the animation. It runs only when the counter is > 0
         if (mesh?.current && counter) {
             pixelArray.forEach(({ randomPosition, mosaicPosition, color }, i) => {
@@ -313,8 +308,6 @@ const Pixels = ({appState, pictures, width = 160, height = 100}) => {
     
             mesh.current.instanceColor.needsUpdate = true
             mesh.current.instanceMatrix.needsUpdate = true
-
-            // mesh.current.rotation.z = MathUtils.clamp(mesh.current.rotation.z + .3, 0, Math.PI * 2)
 
             invalidate()
            

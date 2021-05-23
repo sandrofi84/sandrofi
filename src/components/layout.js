@@ -15,8 +15,12 @@ import DispatchContext from "../context/dispatchContext"
 const Layout = ({children, location}) => {
     // If the relative path starts with /projects, we set the state to /projects/, otherwise we
     // set the state to whatever the relative path is, but adding a "/" at the end if it is missing
-    const [appState, setAppState] = useState(/^[/]projects/.test(location.pathname) ? "/projects/" : /[/]$/.test(location.pathname) ? location.pathname : location.pathname + "/")
-    console.log(location.pathname);
+    const [appState, setAppState] = useState()
+    console.log(WebGLRenderingContext);
+
+    useEffect(()=>{
+        setAppState(/^[/]projects/.test(location.pathname) ? "/projects/" : /[/]$/.test(location.pathname) ? location.pathname : location.pathname + "/")
+    }, [location.pathname])
     return (
             <StateContext.Provider value={appState}>
                 <DispatchContext.Provider value={setAppState}>
