@@ -85,7 +85,7 @@ const ContactForm = () => {
                 setNameIsValid(false);
                 setEmailIsValid(false);
                 setMessageIsValid(false);
-                
+
             } catch (error) {
                 console.log(error);
                 setWasSent(false);
@@ -213,7 +213,9 @@ const ContactForm = () => {
                                 "send"
                             }
                             {
-                                !bannerIsLoading && !bannerIsVisible && nameIsValid && emailIsValid && messageIsValid ? <span className="animation--shake" style={{display: "inline-block"}}><img src={playIcon} alt="" className="icon-play"/></span> : <span className="" style={{display: "inline-block"}}><img src={pauseIcon} alt="" className="icon-play"/></span>
+                                !bannerIsLoading && !bannerIsVisible && nameIsValid && emailIsValid && messageIsValid ? <span className="animation--shake" style={{display: "inline-block"}}><img src={playIcon} alt="" className="icon-play"/></span> 
+                                : !bannerIsLoading && !bannerIsVisible && !(nameIsValid && emailIsValid && messageIsValid) ? <span className="" style={{display: "inline-block"}}><img src={pauseIcon} alt="" className="icon-play"/></span>
+                                : ""
                             }
                         </button>
                         <FormConfirmationBanner isLoading={bannerIsLoading} wasSent={wasSent} isVisible={bannerIsVisible} />
