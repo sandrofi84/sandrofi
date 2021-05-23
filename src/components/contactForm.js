@@ -16,7 +16,6 @@ const ContactForm = () => {
     const [message, setMessage] = useState('')
     const [phone, setPhone] = useState('')
     const [address, setAddress] = useState('')
-    const [statusIsVisible, setStatusIsVisible] = useState(false)
     const [nameIsValid, setNameIsValid] = useState(false)
     const [emailIsValid, setEmailIsValid] = useState(false)
     const [messageIsValid, setMessageIsValid] = useState(false)
@@ -83,6 +82,10 @@ const ContactForm = () => {
                 setName("");
                 setEmail("");
                 setMessage("");
+                setNameIsValid(false);
+                setEmailIsValid(false);
+                setMessageIsValid(false);
+                
             } catch (error) {
                 console.log(error);
                 setWasSent(false);
@@ -94,9 +97,9 @@ const ContactForm = () => {
 
         } else if (nameIsValid && emailIsValid && messageIsValid && (phone || address)) {
             setIsRobot(true);
-            setStatusIsVisible(true);
+            // setStatusIsVisible(true);
         } else {
-            setStatusIsVisible(true);
+            // setStatusIsVisible(true);
         }
 
     }
@@ -125,6 +128,10 @@ const ContactForm = () => {
                     setName("");
                     setEmail("");
                     setMessage("");
+                    setNameIsValid(false);
+                    setEmailIsValid(false);
+                    setMessageIsValid(false);
+
                 } catch (error) {
                     console.log(error);
                     setWasSent(false);
@@ -135,7 +142,7 @@ const ContactForm = () => {
                 }
 
             } else {
-                setStatusIsVisible(true);
+                // setStatusIsVisible(true);
             }
 
         } else {
@@ -206,7 +213,7 @@ const ContactForm = () => {
                                 "send"
                             }
                             {
-                                nameIsValid && emailIsValid && messageIsValid ? <span className="animation--shake" style={{display: "inline-block"}}><img src={playIcon} alt="" className="icon-play"/></span> : <span className="" style={{display: "inline-block"}}><img src={pauseIcon} alt="" className="icon-play"/></span>
+                                !bannerIsLoading && !bannerIsVisible && nameIsValid && emailIsValid && messageIsValid ? <span className="animation--shake" style={{display: "inline-block"}}><img src={playIcon} alt="" className="icon-play"/></span> : <span className="" style={{display: "inline-block"}}><img src={pauseIcon} alt="" className="icon-play"/></span>
                             }
                         </button>
                         <FormConfirmationBanner isLoading={bannerIsLoading} wasSent={wasSent} isVisible={bannerIsVisible} />
