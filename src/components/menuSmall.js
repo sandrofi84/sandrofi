@@ -3,6 +3,8 @@ import { Link } from "gatsby"
 import { CSSTransition } from 'react-transition-group'
 
 import githubIcon from '../images/icon-github.png'
+import linkedinIcon from '../images/icon-linkedin.png'
+import emailIcon from '../images/icon-email.png'
 
 const MenuSmall = (props) => {
 
@@ -49,8 +51,10 @@ const MenuSmall = (props) => {
                             <Link to="/contact/" onClick={() => appDispatch({type: "setLocation", location: "/contact/"})}>contact</Link>
                             <span className={`${appState.location === "/contact/" ? "animation--flash" : ""}`} style={appState.location === "/contact/" ? {display: "inline-block", opacity: "1", color: "white"} : {opacity: "0"}}>_</span>
                         </li>
-                        <li className="header__nav__list-item" style={liStyle}>
-                            <a href="https://github.com/sandrofi84" target="_blank" rel="noreferrer"><img src={githubIcon} alt="github"/></a>
+                        <li className="header__nav__list-item header__nav__icons-container" style={liStyle}>
+                            <a href="mailto:me@sandrofi.com" className=""><img src={emailIcon} alt="email" className="header__nav__icon header__nav__icon--email"/></a>
+                            <a href="https://github.com/sandrofi84" target="_blank" rel="noreferrer" className=""><img src={githubIcon} alt="github" className="header__nav__icon"/></a>
+                            <a href="https://www.linkedin.com/in/sandrofillinich/" target="_blank" rel="noreferrer" className=""><img src={linkedinIcon} alt="linkedin" className="header__nav__icon"/></a>
                         </li>
                     </ul>
                 </nav>

@@ -34,11 +34,11 @@ const SingleProject = ({ data }) => {
                 <h1 className="section__text-title color--red">{title}</h1>
                 {
                   websiteLink &&
-                  <p>website: <a href={websiteLink} target="_blank" rel="noreferrer" className="color--orange">{websiteLinkPretty}</a></p>
+                  <p>website: <a href={websiteLink} target="_blank" rel="noreferrer" className="color--orange" style={{textDecoration: "underline"}}>{websiteLinkPretty}</a></p>
                 }
                 {
                   githubLink &&
-                  <p>website: <a href={githubLink} target="_blank" rel="noreferrer" className="color--orange">{githubLinkPretty}</a></p>
+                  <p>github repo: <a href={githubLink} target="_blank" rel="noreferrer" className="color--orange" style={{textDecoration: "underline"}}>{githubLinkPretty}</a></p>
                 }
                 
                 <p>technologies: <span className="color--light-orange">{techUsed}</span></p>

@@ -191,7 +191,7 @@ const ContactForm = () => {
                             <textarea ref={messageField} onChange={e => {
                                 setMessage(e.target.value);
                                 setMessageIsValid(validateMessage(e.target.value));
-                            }} name="message" id="message-field" cols="33" rows="7" value={message} autoComplete="new-password" />
+                            }} name="message" id="message-field" cols="33" rows="5" value={message} autoComplete="new-password" />
                             <InputStatus isValid={messageIsValid} isLast={true} />
                         </div>
                     </div>

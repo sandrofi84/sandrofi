@@ -1,0 +1,33 @@
+.footer {
+  z-index: 4;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 60px;
+  padding: 5px 20px;
+
+  &-content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    max-width: 700px;
+    height: 100%;
+    margin: auto;
+  }
+
+  &__icon {
+    height: 20px;
+    width: 20px;
+
+    &--email {
+      width: 24px;
+      filter: invert(1);
+    }
+  }
+
+  &__link {
+    &:hover {
+      border-bottom: red 1px solid;
+    }
+  }
+}

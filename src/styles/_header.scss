@@ -1,7 +1,7 @@
 @use "variables";
 
 .header {
-  z-index: 100;
+  z-index: 99;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -31,6 +31,23 @@
         &:hover {
           color: variables.$mainOrange;
         }
+      }
+    }
+
+    &__icons-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 120px;
+    }
+
+    &__icon {
+      height: 24px;
+      width: 24px;
+
+      &--email {
+        width: 28px;
+        filter: invert(1);
       }
     }
   }

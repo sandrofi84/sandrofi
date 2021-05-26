@@ -14,7 +14,7 @@ import StateContext from "../context/stateContext"
 import DispatchContext from "../context/dispatchContext"
 
 // Utilities
-import makeDelay from "../utilities/make-delay"
+import Footer from "./footer"
 
 
 const Layout = ({children, location}) => {
@@ -64,7 +64,7 @@ const Layout = ({children, location}) => {
                     <main>
                         {children}
                     </main>
-                    <footer />
+                    <Footer />
                 </DispatchContext.Provider>
             </StateContext.Provider>
     )
