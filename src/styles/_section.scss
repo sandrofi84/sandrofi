@@ -27,6 +27,8 @@
     min-height: 700px;
     width: 100vw;
     padding: 0 5%;
+    background-color: rgba(0, 0, 0, 0.1);
+    overflow-x: hidden;
 
     @media (min-width: 550px) {
       padding: 0 10%;

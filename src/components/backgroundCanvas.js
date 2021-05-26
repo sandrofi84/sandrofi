@@ -12,14 +12,14 @@ import StateContext from "../context/stateContext"
 
 // Pictures
 import landscapeHome from '../images/sandro-landscape.jpg'
-import landscapeSkills from '../images/a-few-good-men_2-landscape.jpg'
-import landscapeProjects from '../images/snatch-landscape.png'
+import landscapeSkills from '../images/jerry-maguire-landscape.jpg'
+import landscapeProjects from '../images/zoolander-landscape.jpg'
 import landscapeAbout from '../images/dumb-and-dumber-landscape.jpg'
 import landscapeContact from '../images/great-gatsby-landscape.jpg'
 
 import portraitHome from '../images/sandro-portrait.jpg'
-import portraitSkills from '../images/a-few-good-men_2-portrait.jpg'
-import portraitProjects from '../images/snatch-portrait.png'
+import portraitSkills from '../images/jerry-maguire-portrait.jpg'
+import portraitProjects from '../images/zoolander-portrait.jpg'
 import portraitAbout from '../images/dumb-and-dumber-portrait.jpg'
 import portraitContact from '../images/great-gatsby-portrait.jpg'
 

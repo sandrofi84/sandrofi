@@ -153,8 +153,8 @@ const ContactForm = () => {
 
     return (
         <div className="form-container">
-            <div className="">
-                <form onSubmit={e => handleSubmit(e)} autoComplete="off">
+            
+                <form onSubmit={e => handleSubmit(e)} autoComplete="off" className="form">
                     <div id="nab-container" className={`goodybag${isRobot ? " goodybag--is-visible" : ""}`}>
                         <div className="bg--orange-tr border-radius">
                             <input ref={notabotCheckbox} onChange={handleChange} type="checkbox" name="notabot" id="notabot" disabled={false}/>
@@ -224,7 +224,7 @@ const ContactForm = () => {
                 
                 </form>
 
-            </div>
+            
 
         </div>
         
