@@ -15,7 +15,7 @@ import ffIcon from '../images/fastforward.svg'
 
 const SingleProject = ({ data }) => {
 
-  const setAppState = useContext(DispatchContext)
+  const appDispatch = useContext(DispatchContext)
 
   const { body, frontmatter } = data.mdx;
   const { title, featureImage, websiteLink, websiteLinkPretty, githubLink, githubLinkPretty, techUsed, embeddedImages, embeddedVideos } = frontmatter;
@@ -49,7 +49,7 @@ const SingleProject = ({ data }) => {
 
                 <div className="project__btn-container">
                   <Link to="/projects/" className="btn btn--red btn--v-margin"><span className="animation--shake" style={{display: "inline-block"}}><img src={ffIcon} alt="" className="icon-rw"/></span> back to projects</Link>
-                  <Link to="/contact/" onClick={() => setAppState("/contact/")} className="btn btn--red btn--v-margin">get in touch <span className="animation--shake" style={{display: "inline-block"}}><img src={ffIcon} alt="" className="icon-ff"/></span></Link>
+                  <Link to="/contact/" onClick={() => appDispatch({type: "setLocation", location: "/contact/"})} className="btn btn--red btn--v-margin">get in touch <span className="animation--shake" style={{display: "inline-block"}}><img src={ffIcon} alt="" className="icon-ff"/></span></Link>
                 </div>
                 
             </div>

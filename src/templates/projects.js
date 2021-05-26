@@ -1,14 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { graphql } from 'gatsby'
 
 // Components
 import Seo from "../components/seo.js"
 import ProjectPool from '../components/projectPool.js'
 
-import makeDelay from '../utilities/make-delay'
+import StateContext from '../context/stateContext'
 
 const Projects = ({ data }) => {
-
+    const {baseDelay, delayAnimation} = useContext(StateContext)
     const projects = data.allMdx.edges;
 
 
@@ -18,7 +18,7 @@ const Projects = ({ data }) => {
       <div className="section-container">
         <section className="section">
             <div className="section__content section__content--large">
-                <h1 className="section__text-title section__text--centered color--red animation--slide-in" style={makeDelay(0)}>my projects.</h1>
+                <h1 className="section__text-title section__text--centered color--red animation--slide-in" style={delayAnimation(baseDelay, 0)}>my projects.</h1>
                 <ProjectPool projects={projects} />
             </div>
         </section>

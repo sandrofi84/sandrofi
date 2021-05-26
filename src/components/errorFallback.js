@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useStaticQuery, graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
+import DispatchContext from '../context/dispatchContext'
+
 const ErrorFallback = ({error, resetErrorBoundary}) => {
+    const appDispatch = useContext(DispatchContext)
+
     const data = useStaticQuery(graphql`
         query {
             file(name: {eq: "sandro-fallback"}) {
@@ -15,13 +19,15 @@ const ErrorFallback = ({error, resetErrorBoundary}) => {
 
     const image = getImage(data.file)
 
+    useEffect(() => {
+        appDispatch({type: "setBaseDelay", baseDelay: 0})
+        appDispatch({type: "toggleErrorMsgIsVisible"})
+    }, [])
+
     return (
-      <div className="fallback-container">
-        {/* <p>Something went wrong:</p>
-        <pre>{error.message}</pre>
-        <button onClick={resetErrorBoundary}>Try again</button> */}
-        <GatsbyImage className="fallback__picture" image={image} imgStyle={{}} alt="me" />
-      </div>
+        <div className="fallback-bg-container">
+          <GatsbyImage className="fallback-bg__picture" image={image} alt="me" />
+        </div>
     )
 }
 

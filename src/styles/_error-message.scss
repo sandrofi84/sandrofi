@@ -1,0 +1,55 @@
+.error-message {
+  &-container {
+    z-index: 100;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    display: none;
+    min-height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+  }
+
+  &__text {
+    width: 350px;
+    padding: 15px;
+    padding-top: 30px;
+    font-size: 1.5rem;
+  }
+
+  &-transition {
+    &-enter {
+      display: flex;
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    &-enter-active {
+      display: flex;
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    &-enter-done {
+      display: flex;
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    &-exit {
+      display: flex;
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    &-exit-active {
+      display: flex;
+    }
+
+    &-exit-done {
+      display: none;
+    }
+  }
+}

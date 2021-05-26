@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import githubIcon from '../images/icon-github.png'
 import globeIcon from '../images/icon-website-globe.png'
 
-import makeDelay from '../utilities/make-delay'
+import StateContext from '../context/stateContext'
 
 const SingleProjectCard = ({project, slug, delay}) => {
+    const {baseDelay, delayAnimation} = useContext(StateContext)
     const {title, excerpt, featureImage, techUsed, websiteLink, githubLink} = project
     return (
-        <div className="project-card bg--black-tr border-radius animation--slide-in" style={makeDelay(delay + 1)}>
+        <div className="project-card bg--black-tr border-radius animation--slide-in" style={delayAnimation(baseDelay, delay + 1)}>
             <div className="project-card__overlay border-radius">
                 <div className="project-card__overlay-content">
                     <Link to={`/projects/${slug}`} className="btn btn--transparent btn--centered">

@@ -9,7 +9,7 @@ function randomize(factor) {
 
 const Pixels = ({appState, pictures, width = 160, height = 100}) => {
     const [imgIndex, setImgIndex] = useState(()=>{
-        switch(appState) {
+        switch(appState.location) {
             case "/":
                 return 0
             case "/skills/":
@@ -31,7 +31,7 @@ const Pixels = ({appState, pictures, width = 160, height = 100}) => {
     const [ windowRatio, setWindowRatio ] = useState(window.innerWidth / window.innerHeight)
     const [ ratioHasChanged, setRatioHasChanged ] = useState(false) 
 
-    console.log(`Pixels, width is ${width} and height is ${width / windowRatio}, appState is ${appState}, index is ${imgIndex}`)
+    console.log(`Pixels, width is ${width} and height is ${width / windowRatio}, appState.location is ${appState.location}, index is ${imgIndex}`)
 
     const [ tempObject, tempPosVector, initialPosVector, finalPosVector, tempMatrix, currentColor, finalColor ] = useMemo(() => {
         return [new THREE.Object3D(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Matrix4(), new THREE.Color(), new THREE.Color()]
@@ -127,7 +127,7 @@ const Pixels = ({appState, pictures, width = 160, height = 100}) => {
     }, [pixelArray])
 
     useEffect(() => {
-        switch(appState) {
+        switch(appState.location) {
             case "/":
                 setImgIndex(0)
                 break
@@ -147,7 +147,7 @@ const Pixels = ({appState, pictures, width = 160, height = 100}) => {
                 setImgIndex(0)
                 break
         }
-    },[appState])
+    },[appState.location])
 
     useEffect(() => {
         const setNewRatio = () => {

@@ -1,4 +1,6 @@
-const makeDelay = (delay) => ({animationDelay: `${1.5 + delay * .1}s`})
+const makeDelay = (baseDelay, addDelay) => {
+    return {animationDelay: `${baseDelay + addDelay * .1}s`}
+}
 
 export default makeDelay
 

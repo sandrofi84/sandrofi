@@ -9,15 +9,23 @@
     background-color: variables.$trWhite;
   }
 
-  &--red {
-    background-color: red;
-  }
-
   &--black {
     background-color: black;
   }
 
   &--black-tr {
     background-color: variables.$trBlack;
+  }
+
+  &--red {
+    background-color: red;
+  }
+
+  &--orange {
+    background-color: variables.$mainOrange;
+  }
+
+  &--orange-tr {
+    background-color: variables.$trMainOrange;
   }
 }

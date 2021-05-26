@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
   siteMetadata: {
     title: "sandrofi",
-    description: `Sandrofi Web Design`,
+    description: `Sandrofi Web Design Portfolio`,
     author: `Sandro Fillinich`,
     siteUrl: URL,
   },

@@ -13,19 +13,19 @@ import StateContext from '../context/stateContext'
 
 const Header = () => {
     const [navIsVisible, setNavIsVisible] = useState(false);
-    const setAppState = useContext(DispatchContext)
+    const appDispatch = useContext(DispatchContext)
     const appState = useContext(StateContext)
 
     return (
         <header className="header bg--black-tr">
             <div className="header__logo">
-                <Link to="/" onClick={() => setAppState("/")}>
+                <Link to="/" onClick={() => appDispatch({type: "setLocation", location: "/"})}>
                     SANDRO<span style={{color: "red"}}>FI.</span>
                 </Link>
             </div>
 
-            <MenuLarge appState={appState} setAppState={setAppState} />
-            <MenuSmall appState={appState} setAppState={setAppState} isVisible={navIsVisible} toggleMenu={setNavIsVisible} />
+            <MenuLarge appState={appState} appDispatch={appDispatch} />
+            <MenuSmall appState={appState} appDispatch={appDispatch} isVisible={navIsVisible} toggleMenu={setNavIsVisible} />
             <MenuIcon navIsVisible={navIsVisible} toggleMenu={setNavIsVisible} />
             
         </header>
