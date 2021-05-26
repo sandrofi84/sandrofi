@@ -156,7 +156,7 @@ const ContactForm = () => {
             <div className="">
                 <form onSubmit={e => handleSubmit(e)} autoComplete="off">
                     <div id="nab-container" className={`goodybag${isRobot ? " goodybag--is-visible" : ""}`}>
-                        <div>
+                        <div className="bg--orange-tr border-radius">
                             <input ref={notabotCheckbox} onChange={handleChange} type="checkbox" name="notabot" id="notabot" disabled={false}/>
                             <label htmlFor="notabot">I am not a robot</label>
                         </div>

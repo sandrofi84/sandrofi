@@ -2,9 +2,11 @@
   z-index: 4;
   position: fixed;
   bottom: 0;
+  display: flex;
+  justify-content: flex-end;
   width: 100vw;
   height: 60px;
-  padding: 5px 20px;
+  padding: 5px 50px;
 
   &-content {
     display: none;
@@ -12,7 +14,6 @@
     align-items: center;
     max-width: 700px;
     height: 100%;
-    margin: auto;
 
     @media (min-width: 890px) {
       display: flex;
@@ -30,6 +31,7 @@
   }
 
   &__link {
+    margin-left: 30px;
     &:hover {
       border-bottom: red 1px solid;
     }
