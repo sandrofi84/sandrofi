@@ -132,7 +132,7 @@ const Pixels = ({appState, appDispatch, pictures, width = 160, height = 100}) =>
         } else {
             appDispatch({type: "setPicComplete"})
         }
-    }, [counter])
+    }, [counter, appDispatch])
 
     useEffect(() => {
         switch(appState.location) {
