@@ -8,6 +8,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Seo from "../components/seo.js"
 
 // Context
+import StateContext from '../context/stateContext'
 import DispatchContext from '../context/dispatchContext'
 
 // Icons
@@ -15,6 +16,7 @@ import ffIcon from '../images/fastforward.svg'
 
 const SingleProject = ({ data }) => {
 
+  const {styleIncomplete, picIsComplete, baseDelay, delayAnimation} = useContext(StateContext)
   const appDispatch = useContext(DispatchContext)
 
   const { body, frontmatter } = data.mdx;
@@ -25,7 +27,7 @@ const SingleProject = ({ data }) => {
     <Seo title={title} />
       <div className="section-container">
         <section className="section">
-            <div className="section__content section__content--medium section__content--centered bg--black-tr border-radius">
+            <div className="section__content section__content--medium section__content--centered bg--black-tr border-radius animation--slide-in" style={picIsComplete ? delayAnimation(baseDelay, 0) : styleIncomplete}>
                 
                 <div className="project__main-picture">
                     <GatsbyImage image={featureImage.childImageSharp.gatsbyImageData} alt={title} />

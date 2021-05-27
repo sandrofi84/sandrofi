@@ -24,10 +24,12 @@ const Layout = ({children, location}) => {
     const initialState = {
         location: "/",
         errorMsgIsVisible: false,
-        baseDelay: 1.5,
+        baseDelay: 0,
         delayAnimation: function(baseDelay, addDelay) {
             return {animationDelay: `${baseDelay + addDelay * .1}s`}
-        }
+        },
+        picIsComplete: true,
+        styleIncomplete: { display: "none"}
       }
     
       function reducer(draft, action) {
@@ -43,6 +45,14 @@ const Layout = ({children, location}) => {
     
           case "setBaseDelay":
             draft.baseDelay = action.baseDelay
+            return draft;
+          
+          case "setPicComplete":
+            draft.picIsComplete = true
+            return draft;
+
+          case "setPicIncomplete":
+            draft.picIsComplete = false
             return draft;
           
           default:

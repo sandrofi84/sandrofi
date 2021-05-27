@@ -8,7 +8,7 @@ import ProjectPool from '../components/projectPool.js'
 import StateContext from '../context/stateContext'
 
 const Projects = ({ data }) => {
-    const {baseDelay, delayAnimation} = useContext(StateContext)
+    const {styleIncomplete, picIsComplete, baseDelay, delayAnimation} = useContext(StateContext)
     const projects = data.allMdx.edges;
 
 
@@ -18,7 +18,7 @@ const Projects = ({ data }) => {
       <div className="section-container">
         <section className="section">
             <div className="section__content section__content--large">
-                <h1 className="section__text-title section__text--centered color--red animation--slide-in" style={delayAnimation(baseDelay, 0)}>my projects.</h1>
+                <h1 className="section__text-title section__text--centered color--red animation--slide-in" style={picIsComplete ? delayAnimation(baseDelay, 0) : styleIncomplete}>my projects.</h1>
                 <ProjectPool projects={projects} />
             </div>
         </section>

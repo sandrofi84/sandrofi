@@ -11,7 +11,7 @@ import pauseIcon from '../images/pause.svg'
 import StateContext from '../context/stateContext'
 
 const ContactForm = () => {
-    const {baseDelay, delayAnimation} = useContext(StateContext)
+    const {styleIncomplete, picIsComplete, baseDelay, delayAnimation} = useContext(StateContext)
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [message, setMessage] = useState('')
@@ -164,8 +164,8 @@ const ContactForm = () => {
                     
 
                     <div className="form-group">
-                        <label htmlFor="name-field" className="form-group__label color--red animation--slide-in" style={delayAnimation(baseDelay, 0)}>your name.</label>
-                        <div className={`form-group__input${nameIsValid ? " form-group__input--is-valid" : ""} animation--slide-in`} style={delayAnimation(baseDelay, 1)}>
+                        <label htmlFor="name-field" className="form-group__label color--red animation--slide-in" style={picIsComplete ? delayAnimation(baseDelay, 0) : styleIncomplete}>your name.</label>
+                        <div className={`form-group__input${nameIsValid ? " form-group__input--is-valid" : ""} animation--slide-in`} style={picIsComplete ? delayAnimation(baseDelay, 1) : styleIncomplete}>
                             <input ref={nameField} onChange={e => {
                                 setName(e.target.value);
                                 setNameIsValid(validateName(e.target.value));
@@ -175,8 +175,8 @@ const ContactForm = () => {
                     </div>
                     
                     <div className="form-group">
-                        <label htmlFor="email-field" className="form-group__label color--red animation--slide-in" style={delayAnimation(baseDelay, 2)}>your email.</label>
-                        <div className={`form-group__input${emailIsValid ? " form-group__input--is-valid" : ""} animation--slide-in`} style={delayAnimation(baseDelay, 3)}>
+                        <label htmlFor="email-field" className="form-group__label color--red animation--slide-in" style={picIsComplete ? delayAnimation(baseDelay, 2) : styleIncomplete}>your email.</label>
+                        <div className={`form-group__input${emailIsValid ? " form-group__input--is-valid" : ""} animation--slide-in`} style={picIsComplete ? delayAnimation(baseDelay, 3) : styleIncomplete}>
                             <input ref={emailField} onChange={e => {
                                 setEmail(e.target.value);
                                 setEmailIsValid(validateEmail(e.target.value));
@@ -186,8 +186,8 @@ const ContactForm = () => {
                     </div>
                 
                     <div className="form-group">
-                        <label htmlFor="message-field" className="form-group__label color--red animation--slide-in" style={delayAnimation(baseDelay, 4)}>your message.</label>
-                        <div className={`form-group__input${messageIsValid ? " form-group__input--is-valid" : ""} animation--slide-in`} style={delayAnimation(baseDelay, 5)}>
+                        <label htmlFor="message-field" className="form-group__label color--red animation--slide-in" style={picIsComplete ? delayAnimation(baseDelay, 4) : styleIncomplete}>your message.</label>
+                        <div className={`form-group__input${messageIsValid ? " form-group__input--is-valid" : ""} animation--slide-in`} style={picIsComplete ? delayAnimation(baseDelay, 5) : styleIncomplete}>
                             <textarea ref={messageField} onChange={e => {
                                 setMessage(e.target.value);
                                 setMessageIsValid(validateMessage(e.target.value));
@@ -206,7 +206,7 @@ const ContactForm = () => {
                             setAddress(e.target.value);
                         }} type="text" name="address" id="address-field" value={address} autoComplete="new-password" className="goodybag"/>
 
-                    <div className="form__btn-group animation--slide-in" style={delayAnimation(baseDelay, 6)}>
+                    <div className="form__btn-group animation--slide-in" style={picIsComplete ? delayAnimation(baseDelay, 6) : styleIncomplete}>
                         <button type="submit" className={`btn btn--red${bannerIsLoading ? " btn--loading" : ""}${nameIsValid && emailIsValid && messageIsValid ? "" : " btn--disabled"}`} disabled={bannerIsLoading} style={!bannerIsLoading && bannerIsVisible ? {backgroundColor: "red"} : {}}>
                             { 
                                 bannerIsLoading ? <div className="loading-icon"><div></div></div> :

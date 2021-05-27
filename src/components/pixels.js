@@ -7,7 +7,7 @@ function randomize(factor) {
     return Math.sin(Math.random() * 1000) * factor
 }
 
-const Pixels = ({appState, pictures, width = 160, height = 100}) => {
+const Pixels = ({appState, appDispatch, pictures, width = 160, height = 100}) => {
     const [imgIndex, setImgIndex] = useState(()=>{
         switch(appState.location) {
             case "/":
@@ -31,7 +31,7 @@ const Pixels = ({appState, pictures, width = 160, height = 100}) => {
     const [ windowRatio, setWindowRatio ] = useState(window.innerWidth / window.innerHeight)
     const [ ratioHasChanged, setRatioHasChanged ] = useState(false) 
 
-    console.log(`Pixels, width is ${width} and height is ${width / windowRatio}, appState.location is ${appState.location}, index is ${imgIndex}`)
+    console.log(`Counter is ${counter}, PicIsComplete ${appState.picIsComplete}`)
 
     const [ tempObject, tempPosVector, initialPosVector, finalPosVector, tempMatrix, currentColor, finalColor ] = useMemo(() => {
         return [new THREE.Object3D(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Matrix4(), new THREE.Color(), new THREE.Color()]
@@ -125,6 +125,14 @@ const Pixels = ({appState, pictures, width = 160, height = 100}) => {
         }
         return null
     }, [pixelArray])
+
+    useEffect(() => {
+        if (counter) {
+            appDispatch({type: "setPicIncomplete"})
+        } else {
+            appDispatch({type: "setPicComplete"})
+        }
+    }, [counter])
 
     useEffect(() => {
         switch(appState.location) {

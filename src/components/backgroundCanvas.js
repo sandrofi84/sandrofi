@@ -9,6 +9,7 @@ import ErrorFallback from "./errorFallback"
 
 // Context
 import StateContext from "../context/stateContext"
+import DispatchContext from "../context/dispatchContext.js"
 
 // Pictures
 import landscapeHome from '../images/sandro-landscape.jpg'
@@ -23,8 +24,10 @@ import portraitProjects from '../images/zoolander-portrait.jpg'
 import portraitAbout from '../images/dumb-and-dumber-portrait.jpg'
 import portraitContact from '../images/great-gatsby-portrait.jpg'
 
+
 const BackgroundCanvas = () => {
     const appState = useContext(StateContext)
+    const appDispatch = useContext(DispatchContext)
 
     const pictures = useMemo(() => ({
         landscape: [landscapeHome, landscapeSkills, landscapeProjects, landscapeAbout, landscapeContact],
@@ -37,7 +40,7 @@ const BackgroundCanvas = () => {
                 <Canvas className="canvas" camera={{position: [0,0,9]}} frameloop="demand">
                     <ambientLight />
                     <Suspense fallback={null}>
-                        <Pixels width={288} height={180} pictures={pictures} appState={appState} />
+                        <Pixels width={288} height={180} pictures={pictures} appState={appState} appDispatch={appDispatch} />
                     </Suspense>
                 </Canvas>
             </ErrorBoundary>
