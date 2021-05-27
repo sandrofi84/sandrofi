@@ -28,5 +28,9 @@
     &--closing {
       transform: scale(0.7) translateY(10px) rotate(180deg);
     }
+
+    &--opening-high {
+      transform: scale(0.7) translateY(-19px);
+    }
   }
 }

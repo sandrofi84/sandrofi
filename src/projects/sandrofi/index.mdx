@@ -4,6 +4,7 @@ featureImage: sandrofi.png
 embeddedImages:
   - sandrofi-animation-expansion.png
   - sandrofi-animation-contraction.png
+  - sandrofi-webgl-fallback.png
 embeddedVideos: []
 excerpt: My very own Portfolio website, featuring 3D animations
 websiteLink: ""
@@ -20,7 +21,11 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 <br />
 
-If you are reading this, chances are you have already seen a couple of pages of this project. This is my first personal website and I wanted it to be <span>simple and easy to navigate</span>.
+If you are reading this, chances are you have already seen a couple of pages of this project. For this project I have taken inspiration from movies and actors I love.
+
+<br />
+
+This is my first personal website and I wanted it to be <span>simple and easy to navigate</span>.
 
 <br />
 
@@ -44,7 +49,7 @@ I decided I would limit the animation part to page transitions, as I wanted the 
 
 <br />
 
-After a little playing with shapes and cameras, I decided to take advantage of THREE.js’ <span>InstancedMesh</span> object, which allows you to render thousands of 3D objects in the canvas at the same time. It can manage <span>~10K-30K instances</span> before it begins to lag - this varies depending on shapes, textures and so on.
+After a little playing with shapes and cameras, I decided to take advantage of THREE.js’ <span>InstancedMesh</span> object, which allows you to render thousands of 2D/3D objects in the canvas at the same time. It can manage <span>~10K-50K instances</span> before it begins to lag - <i>this varies depending on shapes, textures and so on</i>. In this case, I render ~50K circles - <i>as spheres it were too heavy on the GPU</i> - at the most.
 
 <br />
 
@@ -105,8 +110,33 @@ The animation stops when the new picture is recomposed - <i>with a tiny offset t
 
 <br />
 
+<h2 className="project__body__subtitle color--red">WebGL Support</h2>
+
+<br />
+
+Unfortunately, <span>not all browsers support WebGL</span>, especially older ones!
+
+<br />
+
+I was surprised to see that Safari on my Macbook Pro did not. So, what now?
+
+<br />
+
+I implemented an <span>error boundary</span> that wraps the Canvas and catches any errors that might occur and, if that is the case, it loads a <span>fallback background</span> and displays a message informing the user.
+
+<br />
+
+<div className="project__body__picture">
+  <GatsbyImage
+    alt="animation contraction"
+    image={getImage(props.localImages[2])}
+  />
+</div>
+
+<br />
+
 <h2 className="project__body__subtitle color--red">Conclusion</h2>
 
 <br />
 
-I had a great time working on this project and cannot wait to learn more about animation in my future projects!
+Learning how to use react-three-fiber and THREE.js was definitely the most challenging part of this project, and I feel like I have only scratched the surface...but I cannot wait to learn more about animation in my future projects!

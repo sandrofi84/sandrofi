@@ -2,6 +2,7 @@
 title: Hodos Training
 featureImage: hodos.png
 embeddedImages:
+  - hodos-not-a-robot.png
   - hodos-page-speed-desktop.png
   - hodos-page-speed-mob.png
 embeddedVideos:
@@ -58,11 +59,53 @@ So I chose to host the site on [Netlify](https://www.netlify.com/), which works 
 
 <br />
 
+NetlifyCMS is a very simple tool, it’s easy to set up and comes free to Netlify users. It saves the files you upload/create directly to your Github repo - <i>as markdown or media files</i> - triggering a new build of your website.
+
+<br />
+
 I used a Netlify Function to link the contact form to <span>AWS SES</span> (Simple E-mail System), which sends an email to my girlfriend with the user’s message.
 
 <br />
 
-NetlifyCMS is a very simple tool, it’s easy to set up and comes free to Netlify users. It saves the files you upload/create directly to your Github repo - <i>as markdown or media files</i> - triggering a new build of your website.
+Or, at least, that's what I thought...
+
+<br />
+
+<h2 className="project__body__subtitle color--red">Bots, Bots Everywhere!</h2>
+
+<br />
+
+Unfortunately, my girlfriend <span>started receiving many emails from bots</span> via the contact form.
+
+<br />
+
+So, I immediately went and added a couple of <span>hidden honey-pot fields</span> to it, making sure to disable auto-complete.
+
+<br />
+
+This seemed to work great and, to a certain extent, it did. So what is the issue?
+
+<br />
+
+One day, I noticed that <span>Safari's auto-complete feature was disregarding my polite autocomplete="off" suggestion</span>.
+
+<br />
+
+It took a couple of hours, but I think I came up with a good solution.
+
+<br />
+
+The idea is that, if any of the hidden fields are filled when the "send" button is pressed, this would render a checkbox - that was previously hidden - visible to the user, prompting them to tick it in order to send the message. But this is not good enough, as some bots can even tick a checkbox. So, here's the trick: if the checkbox, which is initially hidden from the user, gets ticked before the "send" button is pressed the first time, it would disable it, making it impossible to tick it once the "send" button is pressed.
+
+<br />
+
+<div className="project__body__picture">
+  <GatsbyImage alt="some alt text" image={getImage(props.localImages[0])} />
+</div>
+
+<br />
+
+Not sure how long it will last before the bots get smarter...but it has been working so far!
 
 <br />
 
@@ -96,13 +139,13 @@ And the result was outstanding.
 <br />
 
 <div className="project__body__picture">
-  <GatsbyImage alt="some alt text" image={getImage(props.localImages[0])} />
+  <GatsbyImage alt="some alt text" image={getImage(props.localImages[1])} />
 </div>
 
 <br />
 
 <div className="project__body__picture">
-  <GatsbyImage alt="some alt text" image={getImage(props.localImages[1])} />
+  <GatsbyImage alt="some alt text" image={getImage(props.localImages[2])} />
 </div>
 
 <br />

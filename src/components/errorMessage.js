@@ -21,7 +21,7 @@ const ErrorMessage = () => {
       return () => {
         window.removeEventListener("keyup", closeOverlay)
       }
-    }, [])
+    }, [appDispatch])
 
     return (
       <CSSTransition nodeRef={ref} in={appState.errorMsgIsVisible} timeout={500} classNames="error-message-transition">

@@ -7,7 +7,7 @@ function randomize(factor) {
     return Math.sin(Math.random() * 1000) * factor
 }
 
-const Pixels = ({appState, appDispatch, pictures, width = 160, height = 100}) => {
+const Pixels = ({appState, appDispatch, pictures, width, height}) => {
     const [imgIndex, setImgIndex] = useState(()=>{
         switch(appState.location) {
             case "/":

@@ -22,7 +22,7 @@ const ErrorFallback = ({error, resetErrorBoundary}) => {
     useEffect(() => {
         appDispatch({type: "setBaseDelay", baseDelay: 0})
         appDispatch({type: "toggleErrorMsgIsVisible"})
-    }, [])
+    }, [appDispatch])
 
     return (
         <div className="fallback-bg-container">

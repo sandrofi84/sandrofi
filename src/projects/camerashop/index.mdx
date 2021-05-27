@@ -72,7 +72,7 @@ Gatsby can generate pages programmatically, using GraphQL to pull all the inform
 
 <br />
 
-[Contentful](https://www.contentful.com/) was my choice, as it allows to create/modify and store the products’ information along with images easily, and it integrates well with Gatsby through a plugin.
+[Contentful](https://www.contentful.com/) was my choice, as it allows to create/modify and store the products’ information along with images easily, and it integrates well with Gatsby through a plugin. I implemented a webhook that triggers a build of the site whenever a new asset - <i>product or blog post</i> - is published on the CMS.
 
 <br />
 
@@ -159,4 +159,4 @@ Et voilà.
 
 <br />
 
-This was definitely the most challenging part of the project, as I had to decide what structure made more sense for the real-time updates to the Shop page.
+The most challenging part of the project was deciding what structure made more sense for the real-time updates to the Shop page. There are some platforms that offer websocket-as-a-service - like [Pusher](https://pusher.com/), [Ably](https://ably.com/) or [Piesocket](https://www.piesocket.com/) - which would have made more sense in a JAMStack architecture. But I wanted to challenge myself and learn something, so I went with a NodeJS server connected to AWS AppSync, which is highly scalable - <i>in case the business takes off!</i>

@@ -64,7 +64,7 @@ const Layout = ({children, location}) => {
 
     useEffect(()=>{
         appDispatch({type: "setLocation", location: /^[/]projects/.test(location.pathname) ? "/projects/" : /[/]$/.test(location.pathname) ? location.pathname : location.pathname + "/" })
-    }, [location.pathname])
+    }, [location.pathname, appDispatch])
     return (
             <StateContext.Provider value={appState}>
                 <DispatchContext.Provider value={appDispatch}>
