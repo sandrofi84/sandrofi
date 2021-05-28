@@ -1,0 +1,119 @@
+.loading {
+  &-screen {
+    z-index: 98;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+
+    &__progress-bar {
+      width: 0%;
+      height: 100%;
+      background-color: red;
+
+      animation: loading-progress 10s 1 forwards;
+
+      &-container {
+        width: 100%;
+        max-width: 350px;
+        height: 30px;
+        margin: 30px 0;
+        border: 2px solid white;
+        border-radius: 4px;
+      }
+    }
+  }
+}
+
+/* Dots Loading Animation */
+
+.loading-icon {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.loading-icon::before,
+.loading-icon::after {
+  content: " ";
+}
+
+.loading-icon div,
+.loading-icon::before,
+.loading-icon::after {
+  margin: 0px 4.5px;
+  margin-top: 3px;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: red;
+  opacity: 0;
+  transform: translateY(-3px);
+}
+
+.loading-icon::before {
+  -moz-animation: opacitychange 1s ease-in-out infinite;
+  -webkit-animation: opacitychange 1s ease-in-out infinite;
+  -o-animation: opacitychange 1s ease-in-out infinite;
+  animation: opacitychange 1s ease-in-out infinite;
+}
+
+.loading-icon div {
+  -moz-animation: opacitychange 1s ease-in-out 0.33s infinite;
+  -webkit-animation: opacitychange 1s ease-in-out 0.33s infinite;
+  -o-animation: opacitychange 1s ease-in-out 0.33s infinite;
+  animation: opacitychange 1s ease-in-out 0.33s infinite;
+  -webkit-animation-fill-mode: infinite;
+  animation-fill-mode: infinite;
+}
+
+.loading-icon::after {
+  -moz-animation: opacitychange 1s ease-in-out 0.66s infinite;
+  -webkit-animation: opacitychange 1s ease-in-out 0.66s infinite;
+  -o-animation: opacitychange 1s ease-in-out 0.66s infinite;
+  animation: opacitychange 1s ease-in-out 0.66s infinite;
+  -webkit-animation-fill-mode: infinite;
+  animation-fill-mode: infinite;
+}
+
+@keyframes opacitychange {
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  60% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes opacitychange {
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  60% {
+    opacity: 1;
+  }
+}
+
+@keyframes loading-progress {
+  0% {
+    width: 0%;
+  }
+  30% {
+    width: 50%;
+  }
+  60% {
+    width: 80%;
+  }
+  100% {
+    width: 100%;
+  }
+}

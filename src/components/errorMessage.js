@@ -29,7 +29,7 @@ const ErrorMessage = () => {
           <div className="error-message__text bg--orange-tr border-radius">
             <p>uh oh...</p>
             <p>it seems like either your browser does not support WebGL or it is disabled!</p>
-            <p>please update your browser or enable WebGL if you want to see the webiste in all it's glory! :)</p>
+            <p>please update your browser or enable WebGL if you want to see the webiste in all its glory! :)</p>
             <button 
               onClick={() => appDispatch({type: "toggleErrorMsgIsVisible"})} 
               className="btn btn--transparent btn--v-margin btn--centered">

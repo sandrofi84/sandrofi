@@ -6,15 +6,15 @@ import "../styles/layout.scss"
 
 // Components
 import Header from "./header"
+import Footer from "./footer"
 import BackgroundCanvas from "./backgroundCanvas"
 import ErrorMessage from "./errorMessage"
+import LoadingScreen from "./loadingScreen"
 
 // Context
 import StateContext from "../context/stateContext"
 import DispatchContext from "../context/dispatchContext"
 
-// Utilities
-import Footer from "./footer"
 
 
 const Layout = ({children, location}) => {
@@ -68,6 +68,7 @@ const Layout = ({children, location}) => {
     return (
             <StateContext.Provider value={appState}>
                 <DispatchContext.Provider value={appDispatch}>
+                    <LoadingScreen />
                     <Header />
                     <ErrorMessage />
                     <BackgroundCanvas />
