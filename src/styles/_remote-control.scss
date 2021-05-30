@@ -8,7 +8,7 @@
   animation: slide-up 2s forwards;
 
   > div:first-of-type {
-    display: none !important;
+    opacity: 0;
   }
 
   &--slide-up {
