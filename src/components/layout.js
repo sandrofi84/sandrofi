@@ -74,6 +74,7 @@ const Layout = ({children, location}) => {
     return (
             <StateContext.Provider value={appState}>
                 <DispatchContext.Provider value={appDispatch}>
+                    <RemoteControl />
                     <Header />
                     <LoadingScreen />
                     <ErrorMessage />
@@ -81,7 +82,6 @@ const Layout = ({children, location}) => {
                     <main>
                         {children}
                     </main>
-                    <RemoteControl />
                     <Footer />
                 </DispatchContext.Provider>
             </StateContext.Provider>
