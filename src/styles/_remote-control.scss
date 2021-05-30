@@ -1,7 +1,7 @@
 .remote-control {
   z-index: 100;
   display: none;
-  position: fixed;
+  position: fixed !important;
   right: 100px;
   bottom: 0px;
   transform: translateY(200px);
