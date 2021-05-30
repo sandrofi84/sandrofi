@@ -7,6 +7,10 @@
   transform: translateY(200px);
   animation: slide-up 2s forwards;
 
+  > div:first-of-type {
+    display: none !important;
+  }
+
   &--slide-up {
     display: block;
   }
