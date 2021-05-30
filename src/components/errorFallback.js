@@ -6,6 +6,7 @@ import DispatchContext from '../context/dispatchContext'
 
 const ErrorFallback = ({error, resetErrorBoundary}) => {
     const appDispatch = useContext(DispatchContext)
+    console.log(error)
 
     const data = useStaticQuery(graphql`
         query {
@@ -20,13 +21,7 @@ const ErrorFallback = ({error, resetErrorBoundary}) => {
     const image = getImage(data.file)
 
     useEffect(() => {
-
-        const loadingScreen = document.getElementById("loading-screen")
-
-        if (loadingScreen) {
-            loadingScreen.parentElement.removeChild(loadingScreen)
-        }
-
+        appDispatch({type:"setCanvasCreated"})
         appDispatch({type: "setBaseDelay", baseDelay: 0})
         appDispatch({type: "toggleErrorMsgIsVisible"})
     }, [appDispatch])

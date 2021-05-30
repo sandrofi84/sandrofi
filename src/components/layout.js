@@ -9,11 +9,12 @@ import Header from "./header"
 import Footer from "./footer"
 import BackgroundCanvas from "./backgroundCanvas"
 import ErrorMessage from "./errorMessage"
-import LoadingScreen from "./loadingScreen"
+import RemoteControl from './remoteControl'
 
 // Context
 import StateContext from "../context/stateContext"
 import DispatchContext from "../context/dispatchContext"
+import LoadingScreen from "./loadingScreen"
 
 
 
@@ -23,6 +24,7 @@ const Layout = ({children, location}) => {
 
     const initialState = {
         location: "/",
+        canvasIsCreated: false,
         errorMsgIsVisible: false,
         baseDelay: 0,
         delayAnimation: function(baseDelay, addDelay) {
@@ -37,6 +39,10 @@ const Layout = ({children, location}) => {
     
           case "setLocation":
             draft.location = action.location;
+            return draft;
+
+          case "setCanvasCreated":
+            draft.canvasIsCreated = true;
             return draft;
     
           case "toggleErrorMsgIsVisible":
@@ -68,13 +74,14 @@ const Layout = ({children, location}) => {
     return (
             <StateContext.Provider value={appState}>
                 <DispatchContext.Provider value={appDispatch}>
-                    <LoadingScreen />
                     <Header />
+                    <LoadingScreen />
                     <ErrorMessage />
                     <BackgroundCanvas />
                     <main>
                         {children}
                     </main>
+                    <RemoteControl />
                     <Footer />
                 </DispatchContext.Provider>
             </StateContext.Provider>

@@ -1,15 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
+
+// Context
+import StateContext from "../context/stateContext"
 
 const LoadingScreen = () => {
+    const { canvasIsCreated } = useContext(StateContext)
     return (
-        <div id="loading-screen" className="loading-screen">
+        <div id="loading-screen" className={`loading-screen${canvasIsCreated ? " loading-screen--fade-out" : ""}`}>
             <div className="loading-screen__content">
-                <h1 className="loading-screen__text color--red">Scanning for Channels...</h1>
-                <div className="loading-screen__progress-bar-container">
-                    <div className="loading-screen__progress-bar"></div>
-                </div>
+                <div className="loading-screen__white-flash"></div>
             </div>
-            
         </div>
     )
 }

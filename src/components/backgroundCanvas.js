@@ -1,4 +1,4 @@
-import React, { Suspense, useContext, useMemo } from "react"
+import React, { Suspense, useContext, useMemo, useState } from "react"
 import { Canvas } from '@react-three/fiber'
 
 
@@ -34,18 +34,11 @@ const BackgroundCanvas = () => {
         portrait: [portraitHome, portraitSkills, portraitProjects, portraitAbout, portraitContact]
     }), [])
 
-    function removeLoadingScreen() {
-        const loadingScreen = document.getElementById("loading-screen")
-
-        if (loadingScreen) {
-            loadingScreen.parentElement.removeChild(loadingScreen)
-        }
-    }
 
     return (
         <div className="canvas-container">
             <ErrorBoundary fallback={<ErrorFallback />}>
-                <Canvas className="canvas" camera={{position: [0,0,9]}} frameloop="demand" onCreated={removeLoadingScreen}>
+                <Canvas className="canvas" camera={{position: [0,0,9]}} frameloop="demand" onCreated={() => appDispatch({type:"setCanvasCreated"})}>
                     <ambientLight />
                     <Suspense fallback={null}>
                         <Pixels width={288} height={180} pictures={pictures} appState={appState} appDispatch={appDispatch} />

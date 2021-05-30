@@ -10,6 +10,28 @@
     width: 100vw;
     height: 100vh;
     background-color: black;
+    opacity: 1;
+    transition: all 1s 1.5s;
+
+    &--fade-out {
+      z-index: -100;
+      opacity: 0;
+
+      > div {
+        display: block;
+      }
+    }
+
+    &__content {
+      display: none;
+    }
+
+    &__white-flash {
+      width: 5px;
+      height: 5px;
+      background-color: black;
+      animation: tv-boot ease-out 0.5s 0.7s forwards;
+    }
 
     &__progress-bar {
       width: 0%;
@@ -115,5 +137,27 @@
   }
   100% {
     width: 100%;
+  }
+}
+
+@keyframes tv-boot {
+  0%,
+  20% {
+    transform: scaleX(1) scaleY(1);
+    opacity: 1;
+    background-color: white;
+  }
+  50% {
+    transform: scaleX(1000) scaleY(1);
+    opacity: 1;
+    background-color: white;
+  }
+  80% {
+    transform: scaleX(1000) scaleY(1000);
+    background-color: white;
+  }
+  100% {
+    transform: scaleX(1000) scaleY(1000);
+    background-color: white;
   }
 }
