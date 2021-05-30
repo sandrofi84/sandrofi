@@ -4,12 +4,10 @@
   position: fixed !important;
   right: 100px;
   bottom: 0px;
+  width: 200px;
+  height: 200px;
   transform: translateY(200px);
   animation: slide-up 2s forwards;
-
-  > div:first-of-type {
-    opacity: 0;
-  }
 
   &--slide-up {
     display: block;

@@ -13,15 +13,22 @@ const RemoteControl = () => {
       file(name: {eq: "remote-control"}) {
         id
         childImageSharp {
-          gatsbyImageData(width: 200, placeholder: NONE)
+          gatsbyImageData
         }
       }
     }
   `)
 
-  const image = getImage(data.file)
 
-  return <GatsbyImage image={image} loading="eager" className={`remote-control${canvasIsCreated ? " remote-control--slide-up" : ""}`} />
+  const image = data.file.childImageSharp.gatsbyImageData.images
+
+  console.log(image)
+
+  return <picture>
+            <source srcSet={image.sources[0].srcSet} type="image/webp" />
+            <source srcSet={image.fallback.srcSet} type="image/png" />
+            <img src={image.fallback.src} alt="remote-control" loading="eager" decoding="async" className={`remote-control${canvasIsCreated ? " remote-control--slide-up" : ""}`}/>
+          </picture>
 }
 
 export default RemoteControl
