@@ -13,7 +13,7 @@ const RemoteControl = () => {
       file(name: {eq: "remote-control"}) {
         id
         childImageSharp {
-          gatsbyImageData(width: 200)
+          gatsbyImageData(width: 200, placeholder: NONE)
         }
       }
     }
