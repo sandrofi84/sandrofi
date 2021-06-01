@@ -70,7 +70,7 @@ const Layout = ({children, location}) => {
 
     useEffect(()=>{
         console.log(location)
-        appDispatch({type: "setLocation", location: !location.state ? "/404/" : /^[/]projects/.test(location.pathname) ? "/projects/" : /[/]$/.test(location.pathname) ? location.pathname : location.pathname + "/" })
+        appDispatch({type: "setLocation", location: !location.state && location.pathname !== "/" ? "/404/" : /^[/]projects/.test(location.pathname) ? "/projects/" : /[/]$/.test(location.pathname) ? location.pathname : location.pathname + "/" })
     }, [location.pathname, appDispatch])
 
     return (
