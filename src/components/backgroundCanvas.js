@@ -24,6 +24,7 @@ import portraitSkills from '../images/jerry-maguire-portrait.jpg'
 import portraitProjects from '../images/zoolander-portrait.jpg'
 import portraitAbout from '../images/dumb-and-dumber-portrait.jpg'
 import portraitContact from '../images/great-gatsby-portrait.jpg'
+import portrait404 from '../images/404-portrait.jpg'
 
 
 const BackgroundCanvas = () => {
@@ -32,7 +33,7 @@ const BackgroundCanvas = () => {
 
     const pictures = useMemo(() => ({
         landscape: [landscapeHome, landscapeSkills, landscapeProjects, landscapeAbout, landscapeContact, landscape404],
-        portrait: [portraitHome, portraitSkills, portraitProjects, portraitAbout, portraitContact, landscape404]
+        portrait: [portraitHome, portraitSkills, portraitProjects, portraitAbout, portraitContact, portrait404]
     }), [])
 
 
