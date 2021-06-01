@@ -1,4 +1,5 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useMemo } from "react"
+import { useStaticQuery, graphql } from "gatsby"
 import {useImmerReducer} from "use-immer"
 
 // Styles
@@ -21,6 +22,27 @@ import LoadingScreen from "./loadingScreen"
 const Layout = ({children, location}) => {
     // If the relative path starts with /projects, we set the state to /projects/, otherwise we
     // set the state to whatever the relative path is, but adding a "/" at the end if it is missing
+
+    const data = useStaticQuery(graphql`
+      query {
+        allSitePage {
+          nodes {
+            path
+          }
+        }
+      }
+    `)
+
+    const allPaths = useMemo(() => {
+      const tempPaths = ['/']
+      const pathNodes = data.allSitePage.nodes.filter(node => /^\/[\w-\/]+\/$/.test(node.path))
+      pathNodes.forEach(node => {
+        tempPaths.push(node.path)
+        tempPaths.push(node.path.slice(0, -1))
+      })
+
+      return tempPaths
+    }, [data.allSitePage.nodes])
 
     const initialState = {
         location: "/",
@@ -69,9 +91,8 @@ const Layout = ({children, location}) => {
       const [appState, appDispatch] = useImmerReducer(reducer, initialState);
 
     useEffect(()=>{
-        console.log(location)
-        appDispatch({type: "setLocation", location: !location.state && location.pathname !== "/" ? "/404/" : /^[/]projects/.test(location.pathname) ? "/projects/" : /[/]$/.test(location.pathname) ? location.pathname : location.pathname + "/" })
-    }, [location.pathname, appDispatch])
+        appDispatch({type: "setLocation", location: !allPaths.includes(location.pathname) ? "/404/" : /^[/]projects/.test(location.pathname) ? "/projects/" : /[/]$/.test(location.pathname) ? location.pathname : location.pathname + "/" })
+    }, [location.pathname, appDispatch, allPaths, location])
 
     return (
             <StateContext.Provider value={appState}>
