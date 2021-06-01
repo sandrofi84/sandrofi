@@ -1,4 +1,4 @@
-import React, { Suspense, useContext, useMemo, useState } from "react"
+import React, { Suspense, useContext, useMemo } from "react"
 import { Canvas } from '@react-three/fiber'
 
 
@@ -17,6 +17,7 @@ import landscapeSkills from '../images/jerry-maguire-landscape.jpg'
 import landscapeProjects from '../images/zoolander-landscape.jpg'
 import landscapeAbout from '../images/dumb-and-dumber-landscape.jpg'
 import landscapeContact from '../images/great-gatsby-landscape.jpg'
+import landscape404 from '../images/404-landscape.jpg'
 
 import portraitHome from '../images/sandro-portrait.jpg'
 import portraitSkills from '../images/jerry-maguire-portrait.jpg'
@@ -30,8 +31,8 @@ const BackgroundCanvas = () => {
     const appDispatch = useContext(DispatchContext)
 
     const pictures = useMemo(() => ({
-        landscape: [landscapeHome, landscapeSkills, landscapeProjects, landscapeAbout, landscapeContact],
-        portrait: [portraitHome, portraitSkills, portraitProjects, portraitAbout, portraitContact]
+        landscape: [landscapeHome, landscapeSkills, landscapeProjects, landscapeAbout, landscapeContact, landscape404],
+        portrait: [portraitHome, portraitSkills, portraitProjects, portraitAbout, portraitContact, landscape404]
     }), [])
 
 

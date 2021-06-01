@@ -1,6 +1,5 @@
 import React, { useContext } from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 // Context
 import StateContext from "../context/stateContext"
@@ -21,8 +20,6 @@ const RemoteControl = () => {
 
 
   const image = data.file.childImageSharp.gatsbyImageData.images
-
-  console.log(image)
 
   return <picture>
             <source srcSet={image.sources[0].srcSet} type="image/webp" />

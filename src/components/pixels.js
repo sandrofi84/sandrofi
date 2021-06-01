@@ -20,6 +20,8 @@ const Pixels = ({appState, appDispatch, pictures, width, height}) => {
                 return 3
             case "/contact/":
                 return 4
+            case "/404/":
+                return 5
             default:
                 return 0
         }})
@@ -29,16 +31,14 @@ const Pixels = ({appState, appDispatch, pictures, width, height}) => {
     const mesh = useRef()
     const prevImgIndex = usePrevious(imgIndex)
     const [ windowRatio, setWindowRatio ] = useState(window.innerWidth / window.innerHeight)
-    const [ ratioHasChanged, setRatioHasChanged ] = useState(false) 
-
-    console.log(`Counter is ${counter}, PicIsComplete ${appState.picIsComplete}`)
+    const [ ratioHasChanged, setRatioHasChanged ] = useState(false)
 
     const [ tempObject, tempPosVector, initialPosVector, finalPosVector, tempMatrix, currentColor, finalColor ] = useMemo(() => {
         return [new THREE.Object3D(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Matrix4(), new THREE.Color(), new THREE.Color()]
     }, [])
 
     const canvas = useMemo(() => {
-        console.log("log in Canvas")
+
         const canvas = document.createElement('canvas')
 
         if (windowRatio > 1.6) {
@@ -59,7 +59,7 @@ const Pixels = ({appState, appDispatch, pictures, width, height}) => {
     const loadedPics = useLoader(THREE.ImageLoader, windowRatio > .7 ? pictures.landscape : pictures.portrait)
 
     const dataArray = useMemo(() => {
-        console.log("log in imageData Generator")
+
         let arr = [] 
         
         function getPicData(pic, canvas) {
@@ -81,7 +81,6 @@ const Pixels = ({appState, appDispatch, pictures, width, height}) => {
 
     const pixelArray = useMemo(() => {
         const tempPixels = []
-        console.log("PixelArray is being created")
 
         for (let y = 0; y < canvas.height; y++) {
     
@@ -150,6 +149,9 @@ const Pixels = ({appState, appDispatch, pictures, width, height}) => {
                 break
             case "/contact/":
                 setImgIndex(4)
+                break
+            case "/404/":
+                setImgIndex(5)
                 break
             default:
                 setImgIndex(0)

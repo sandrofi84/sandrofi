@@ -69,8 +69,10 @@ const Layout = ({children, location}) => {
       const [appState, appDispatch] = useImmerReducer(reducer, initialState);
 
     useEffect(()=>{
-        appDispatch({type: "setLocation", location: /^[/]projects/.test(location.pathname) ? "/projects/" : /[/]$/.test(location.pathname) ? location.pathname : location.pathname + "/" })
+        console.log(location)
+        appDispatch({type: "setLocation", location: !location.state ? "/404/" : /^[/]projects/.test(location.pathname) ? "/projects/" : /[/]$/.test(location.pathname) ? location.pathname : location.pathname + "/" })
     }, [location.pathname, appDispatch])
+
     return (
             <StateContext.Provider value={appState}>
                 <DispatchContext.Provider value={appDispatch}>
