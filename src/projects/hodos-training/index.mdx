@@ -5,6 +5,7 @@ embeddedImages:
   - hodos-not-a-robot.png
   - hodos-page-speed-desktop.png
   - hodos-page-speed-mob.png
+  - hodos-countdown.jpg
 embeddedVideos:
   - hodos-countdown.webm
   - hodos-countdown.mp4
@@ -118,7 +119,12 @@ At first, my girlfriend just wanted to be able to upload new blog posts and cour
 <br />
 
 <div className="project__body__video">
-  <video controls mute="true" width="100%" preload="metadata">
+  <video
+    controls
+    mute="true"
+    width="100%"
+    poster={getImage(props.localImages[3]).images.fallback.src}
+  >
     <source src={props.localVideos[0].publicURL} type="video/webm" />
     <source src={props.localVideos[1].publicURL} type="video/mp4" />
   </video>

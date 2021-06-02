@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 
 // Components
 import { Link, graphql } from 'gatsby'
-import { GatsbyImage } from 'gatsby-plugin-image'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Seo from "../components/seo.js"
 

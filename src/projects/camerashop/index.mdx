@@ -7,6 +7,7 @@ embeddedImages:
   - camerashop-snipcart-side.png
   - camerashop-shop-page.png
   - camerashop-shop-filters.png
+  - camerashop-realtime.jpg
 embeddedVideos:
   - camerashop-realtime.webm
   - camerashop-realtime.mp4
@@ -147,7 +148,12 @@ Et voilà.
 <br />
 
 <div className="project__body__video">
-  <video controls mute="true" width="100%" preload="metadata">
+  <video
+    controls
+    mute="true"
+    width="100%"
+    poster={getImage(props.localImages[5]).images.fallback.src}
+  >
     <source src={props.localVideos[0].publicURL} type="video/webm" />
     <source src={props.localVideos[1].publicURL} type="video/mp4" />
   </video>
