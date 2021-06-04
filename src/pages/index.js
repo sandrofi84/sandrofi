@@ -9,7 +9,7 @@ const IndexPage = () => {
 
   return (
     <>
-      <Seo title="home" />
+      <Seo title="sandrofi" home />
       <div className="section-container">
         <HomeSection />
       </div>
