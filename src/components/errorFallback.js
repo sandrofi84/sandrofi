@@ -23,7 +23,7 @@ const ErrorFallback = ({error, resetErrorBoundary}) => {
     useEffect(() => {
         appDispatch({type:"setCanvasCreated"})
         appDispatch({type: "setBaseDelay", baseDelay: 0})
-        appDispatch({type: "toggleErrorMsgIsVisible"})
+        appDispatch({type: "showErrorMsg"})
     }, [appDispatch])
 
     return (

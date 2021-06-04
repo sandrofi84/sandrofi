@@ -12,7 +12,7 @@ const ErrorMessage = () => {
     useEffect(() => {
       const closeOverlay = e => {
         if (e.key === "Escape" || e.key === "Enter") {
-          appDispatch({type: "toggleErrorMsgIsVisible"})
+          appDispatch({type: "hideErrorMsg"})
         }
       }
 

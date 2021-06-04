@@ -67,10 +67,14 @@ const Layout = ({children, location}) => {
             draft.canvasIsCreated = true;
             return draft;
     
-          case "toggleErrorMsgIsVisible":
-            draft.errorMsgIsVisible = !draft.errorMsgIsVisible;
+          case "showErrorMsg":
+            draft.errorMsgIsVisible = true;
             return draft;
-    
+
+          case "hideErrorMsg":
+            draft.errorMsgIsVisible = false;
+            return draft;
+      
           case "setBaseDelay":
             draft.baseDelay = action.baseDelay
             return draft;
