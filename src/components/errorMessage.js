@@ -31,7 +31,7 @@ const ErrorMessage = () => {
             <p>it seems like either your browser does not support WebGL or it is disabled!</p>
             <p>please update your browser or enable WebGL if you want to see the webiste in all its glory! :)</p>
             <button 
-              onClick={() => appDispatch({type: "toggleErrorMsgIsVisible"})} 
+              onClick={() => appDispatch({type: "hideErrorMsg"})} 
               className="btn btn--transparent btn--v-margin btn--centered">
                 close
             </button>
