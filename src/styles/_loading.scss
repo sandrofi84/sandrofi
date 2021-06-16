@@ -1,6 +1,6 @@
 .loading {
   &-screen {
-    z-index: 98;
+    z-index: 1000;
     position: fixed;
     top: 0;
     left: 0;
@@ -17,37 +17,52 @@
       z-index: -100;
       opacity: 0;
 
-      > div {
+      .loading-screen__logo__half {
+        transform: rotateX(-90deg);
+      }
+
+      .loading-screen__white-flash {
         display: block;
       }
     }
 
-    &__content {
-      display: none;
+    &__logo {
+      display: flex;
+      align-items: center;
+
+      &__half {
+        display: inline-block;
+        overflow-x: hidden;
+        width: max-content;
+        font-size: 4rem;
+        transform: rotateX(0deg);
+        transition: transform 0.5s;
+
+        &-first {
+          text-align: end;
+          font-style: normal;
+          margin-right: -200px;
+          animation: slide-out 2s 1s forwards;
+
+          span {
+            color: black;
+            animation: appear 2s 1s forwards;
+          }
+        }
+
+        span {
+          font-style: normal;
+        }
+      }
     }
 
     &__white-flash {
+      display: none;
+      position: absolute;
       width: 5px;
       height: 5px;
       background-color: black;
       animation: tv-boot ease-out 0.5s 0.7s forwards;
-    }
-
-    &__progress-bar {
-      width: 0%;
-      height: 100%;
-      background-color: red;
-
-      animation: loading-progress 10s 1 forwards;
-
-      &-container {
-        width: 100%;
-        max-width: 350px;
-        height: 30px;
-        margin: 30px 0;
-        border: 2px solid white;
-        border-radius: 4px;
-      }
     }
   }
 }
@@ -159,5 +174,25 @@
   100% {
     transform: scaleX(1000) scaleY(1000);
     background-color: white;
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    margin-right: -200px;
+  }
+
+  100% {
+    margin-right: 0px;
+  }
+}
+
+@keyframes appear {
+  0% {
+    color: black;
+  }
+
+  100% {
+    color: white;
   }
 }
