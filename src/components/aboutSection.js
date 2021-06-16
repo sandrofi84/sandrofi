@@ -1,5 +1,8 @@
 import React, { useContext } from 'react'
 import { Link } from 'gatsby'
+import { useStaticQuery, graphql } from "gatsby"
+
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
 import DispatchContext from '../context/dispatchContext'
 import StateContext from '../context/stateContext'
@@ -11,6 +14,18 @@ import ffIcon from '../images/fastforward.svg'
 const AboutSection = () => {
     const {styleIncomplete, picIsComplete, baseDelay, delayAnimation} = useContext(StateContext)
     const appDispatch = useContext(DispatchContext)
+
+    const data = useStaticQuery(graphql`
+        query {
+            file(name: {eq: "sandrofi-about"}) {
+                childImageSharp {
+                  gatsbyImageData(width: 800, placeholder: BLURRED, quality: 75, layout: CONSTRAINED)
+                }
+            }
+        }
+    `)
+
+    const image = getImage(data.file)
 
     return (
         <section className="section section--about">
@@ -32,13 +47,13 @@ const AboutSection = () => {
 
                 <p className="section__text-medium animation--slide-in" style={picIsComplete ? delayAnimation(baseDelay, 7) : styleIncomplete}>It was such a fun experience that <span>I decided to do it again. And again.</span><Qm closing /></p>
 
-                <p className="section__text-medium animation--slide-in" style={picIsComplete ? delayAnimation(baseDelay, 8) : styleIncomplete}></p>
+                <div className="section__main-picture border-radius animation--slide-in" style={picIsComplete ? delayAnimation(baseDelay, 8) : styleIncomplete}>
+                    <GatsbyImage image={image} alt="me" />
+                </div>
 
-                <p className="section__text-medium animation--slide-in" style={picIsComplete ? delayAnimation(baseDelay, 9) : styleIncomplete}> </p>
+                <Link to="/projects/" onClick={() => appDispatch({type: "setLocation", location: "/projects/"})} className="btn btn--red btn--v-margin animation--slide-in" style={picIsComplete ? delayAnimation(baseDelay, 9) : styleIncomplete}>see my projects <span className="animation--shake" style={{display: "inline-block"}}><img src={ffIcon} alt="" className="icon-ff"/></span></Link>
 
-                <Link to="/projects/" onClick={() => appDispatch({type: "setLocation", location: "/projects/"})} className="btn btn--red btn--v-margin animation--slide-in" style={picIsComplete ? delayAnimation(baseDelay, 10) : styleIncomplete}>see my projects <span className="animation--shake" style={{display: "inline-block"}}><img src={ffIcon} alt="" className="icon-ff"/></span></Link>
-
-                <Link to="/contact/" onClick={() => appDispatch({type: "setLocation", location: "/contact/"})} className="btn btn--red btn--v-margin animation--slide-in" style={picIsComplete ? delayAnimation(baseDelay, 11) : styleIncomplete}>get in touch <span className="animation--shake" style={{display: "inline-block"}}><img src={ffIcon} alt="" className="icon-ff"/></span></Link>
+                <Link to="/contact/" onClick={() => appDispatch({type: "setLocation", location: "/contact/"})} className="btn btn--red btn--v-margin animation--slide-in" style={picIsComplete ? delayAnimation(baseDelay, 10) : styleIncomplete}>get in touch <span className="animation--shake" style={{display: "inline-block"}}><img src={ffIcon} alt="" className="icon-ff"/></span></Link>
             </div>
         </section>
     )

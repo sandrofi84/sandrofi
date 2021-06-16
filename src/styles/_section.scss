@@ -35,6 +35,15 @@
     }
   }
 
+  &__main-picture {
+    margin-bottom: 9px;
+    max-width: 600px;
+
+    > div {
+      border: 1px solid variables.$lightOrange;
+    }
+  }
+
   &__content {
     margin: 150px auto 80px auto;
     width: 100%;
