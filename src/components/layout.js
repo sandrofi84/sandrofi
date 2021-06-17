@@ -101,7 +101,7 @@ const Layout = ({children, location}) => {
     return (
             <StateContext.Provider value={appState}>
                 <DispatchContext.Provider value={appDispatch}>
-                    <RemoteControl />
+                    {/*<RemoteControl />*/}
                     <Header />
                     <LoadingScreen />
                     <ErrorMessage />
