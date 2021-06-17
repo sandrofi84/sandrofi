@@ -241,12 +241,12 @@
     transform: translateX(0) scale(1);
   }
   50% {
-    transform: translateX(-30px) scale(3);
+    transform: translateX(-15px) scale(3);
   }
   90% {
-    transform: translateX(-100px) scale(10);
+    transform: translateX(-50px) scale(10);
   }
   100% {
-    transform: translateX(-150px) scale(500);
+    transform: translateX(-75px) scale(500);
   }
 }
