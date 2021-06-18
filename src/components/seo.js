@@ -32,7 +32,7 @@ function SEO({ description, lang, meta, title, home, type, image, author }) {
   const metaDescription = description || site.siteMetadata.description
   const defaultTitle = site.siteMetadata?.title
   const metaType = type || 'website'
-  const metaImage = image || `${site.siteMetadata.url}${file.publicURL}`
+  const metaImage = image || `${site.siteMetadata.siteUrl}${file.publicURL}`
   const metaAuthor = author || site.siteMetadata.author
 
   return (
