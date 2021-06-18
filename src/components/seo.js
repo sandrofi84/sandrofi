@@ -10,8 +10,8 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ description, lang, meta, title, home }) {
-  const { site } = useStaticQuery(
+function SEO({ description, lang, meta, title, home, type, image, author }) {
+  const { site, file } = useStaticQuery(
     graphql`
       query {
         site {
@@ -19,7 +19,11 @@ function SEO({ description, lang, meta, title, home }) {
             title
             description
             author
+            siteUrl
           }
+        }
+        file(name: {eq: "sandrofi-preview"}) {
+          publicURL
         }
       }
     `
@@ -27,6 +31,9 @@ function SEO({ description, lang, meta, title, home }) {
 
   const metaDescription = description || site.siteMetadata.description
   const defaultTitle = site.siteMetadata?.title
+  const metaType = type || 'website'
+  const metaImage = image || `${site.siteMetadata.url}${file.publicURL}`
+  const metaAuthor = author || site.siteMetadata.author
 
   return (
     <Helmet
@@ -42,7 +49,7 @@ function SEO({ description, lang, meta, title, home }) {
         },
         {
           property: `og:title`,
-          content: title,
+          content: defaultTitle,
         },
         {
           property: `og:description`,
@@ -50,7 +57,15 @@ function SEO({ description, lang, meta, title, home }) {
         },
         {
           property: `og:type`,
-          content: `website`,
+          content: metaType,
+        },
+        {
+          property: `og:image`,
+          content: metaImage,
+        },
+        {
+          name: `author`,
+          content: metaAuthor,
         },
         {
           name: `twitter:card`,
@@ -62,11 +77,15 @@ function SEO({ description, lang, meta, title, home }) {
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: defaultTitle,
         },
         {
           name: `twitter:description`,
           content: metaDescription,
+        },
+        {
+          name: `twitter:image`,
+          content: metaImage,
         },
       ].concat(meta)}
     />

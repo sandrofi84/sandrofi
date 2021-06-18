@@ -2,7 +2,7 @@ let URL;
 
 if (process.env.NODE_ENV === 'production') {
 
-  URL = 'https://www.sandrofi.com/';
+  URL = 'https://sandrofi.com/';
 
   } else {
 

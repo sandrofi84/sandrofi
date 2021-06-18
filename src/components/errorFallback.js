@@ -12,7 +12,7 @@ const ErrorFallback = ({error, resetErrorBoundary}) => {
         query {
             largeImage: file(name: {eq: "sandro-fallback-desk"}) {
                 childImageSharp {
-                  gatsbyImageData(width: 1920, breakpoints: 10, placeholder: BLURRED, quality: 75, layout: CONSTRAINED)
+                  gatsbyImageData(width: 1920, placeholder: BLURRED, quality: 75, layout: CONSTRAINED)
                 }
             }
             smallImage: file(name: {eq: "sandro-fallback-mob"}) {
@@ -38,7 +38,7 @@ const ErrorFallback = ({error, resetErrorBoundary}) => {
 
     return (
         <div className="fallback-bg-container">
-          <GatsbyImage className="fallback-bg__picture" image={images} alt="me" />
+          <GatsbyImage className="fallback-bg__picture" loading="eager" image={images} alt="me" />
         </div>
     )
 }
