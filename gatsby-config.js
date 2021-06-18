@@ -2,11 +2,11 @@ let URL;
 
 if (process.env.NODE_ENV === 'production') {
 
-  URL = 'https://sandrofi.com/';
+  URL = 'https://sandrofi.com';
 
   } else {
 
-  URL = 'http://localhost:8000/';
+  URL = 'http://localhost:8000';
 
   }
 
