@@ -1,6 +1,11 @@
 import React, { useLayoutEffect, useMemo, useRef, useEffect, useState } from 'react'
 import { useFrame, useLoader, useThree } from '@react-three/fiber'
-import * as THREE from 'three'
+import { Vector3 } from 'three/src/math/Vector3'
+import { Matrix4 } from 'three/src/math/Matrix4'
+import { Color } from 'three/src/math/Color'
+import { lerp } from 'three/src/math/MathUtils'
+import { Object3D } from 'three/src/core/Object3D'
+import { ImageLoader } from 'three/src/loaders/ImageLoader'
 import usePrevious from '../hooks/usePrevious'
 
 function randomize(factor) {
@@ -34,7 +39,7 @@ const Pixels = ({appState, appDispatch, pictures, width, height}) => {
     const [ ratioHasChanged, setRatioHasChanged ] = useState(false)
 
     const [ tempObject, tempPosVector, initialPosVector, finalPosVector, tempMatrix, currentColor, finalColor ] = useMemo(() => {
-        return [new THREE.Object3D(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Matrix4(), new THREE.Color(), new THREE.Color()]
+        return [new Object3D(), new Vector3(), new Vector3(), new Vector3(), new Matrix4(), new Color(), new Color()]
     }, [])
 
     const canvas = useMemo(() => {
@@ -56,7 +61,7 @@ const Pixels = ({appState, appDispatch, pictures, width, height}) => {
 
     }, [windowRatio, width, height])
     
-    const loadedPics = useLoader(THREE.ImageLoader, windowRatio > .7 ? pictures.landscape : pictures.portrait)
+    const loadedPics = useLoader(ImageLoader, windowRatio > .7 ? pictures.landscape : pictures.portrait)
 
     const dataArray = useMemo(() => {
 
@@ -299,15 +304,15 @@ const Pixels = ({appState, appDispatch, pictures, width, height}) => {
                 const expansionRate = 0.07
                 const contractionRate = 0.3
                 if (isExpanding) {
-                    tempObject.position.x = THREE.MathUtils.lerp(tempPosVector.x, initialPosVector.x, expansionRate)
-                    tempObject.position.y = THREE.MathUtils.lerp(tempPosVector.y, initialPosVector.y, expansionRate)
-                    tempObject.position.z = THREE.MathUtils.lerp(tempPosVector.z, initialPosVector.z, expansionRate)
+                    tempObject.position.x = lerp(tempPosVector.x, initialPosVector.x, expansionRate)
+                    tempObject.position.y = lerp(tempPosVector.y, initialPosVector.y, expansionRate)
+                    tempObject.position.z = lerp(tempPosVector.z, initialPosVector.z, expansionRate)
                 }
 
                 if (!isExpanding) {
-                    tempObject.position.x = THREE.MathUtils.lerp(tempPosVector.x, finalPosVector.x, contractionRate)
-                    tempObject.position.y = THREE.MathUtils.lerp(tempPosVector.y, finalPosVector.y, contractionRate)
-                    tempObject.position.z = THREE.MathUtils.lerp(tempPosVector.z, finalPosVector.z, contractionRate)
+                    tempObject.position.x = lerp(tempPosVector.x, finalPosVector.x, contractionRate)
+                    tempObject.position.y = lerp(tempPosVector.y, finalPosVector.y, contractionRate)
+                    tempObject.position.z = lerp(tempPosVector.z, finalPosVector.z, contractionRate)
                 }
 
                 tempObject.updateMatrix()
