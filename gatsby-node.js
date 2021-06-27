@@ -1,3 +1,15 @@
+const path = require("path");
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        three$: path.resolve("./src/utils/three-exports.js")
+      }
+    }
+  });
+};
+
 exports.createPages = async function({actions, graphql}) {
   const {data} = await graphql(`
   query {
